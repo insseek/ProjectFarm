@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icon/Icon-00/62</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M4,4 L4,11 C4,12.6568542 5.34314575,14 7,14 C8.65685425,14 10,12.6568542 10,11 L10,4 C10,3.44771525 10.4477153,3 11,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,11 C12,13.7614237 9.76142375,16 7,16 C4.23857625,16 2,13.7614237 2,11 L2,4 C2,3.44771525 2.44771525,3 3,3 L3,3 C3.55228475,3 4,3.44771525 4,4 Z M15,3 C15.5522847,3 16,3.44771525 16,4 L16,15 C16,15.5522847 15.5522847,16 15,16 C14.4477153,16 14,15.5522847 14,15 L14,4 C14,3.44771525 14.4477153,3 15,3 Z" id="path-1"></path>
+    </defs>
+    <g id="Icon/Icon-00/62" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#333333" xlink:href="#path-1"></use>
+        <rect id="矩形" fill="#333333" mask="url(#mask-2)" x="2" y="3" width="2" height="2"></rect>
+        <g id="Colors/#212736" mask="url(#mask-2)" fill="#212736">
+            <rect id="Colors/#454C5C" x="0" y="0" width="18" height="18"></rect>
+        </g>
+    </g>
+</svg>

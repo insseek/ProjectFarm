@@ -1,0 +1,148 @@
+.gear-at-div{
+    position: relative;
+
+    .gear-at-textarea{
+        width: 100%;
+        height: 70px;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 14px;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        outline: none;
+        line-height: 1.5;
+        list-style: none;
+        position: relative;
+        overflow: auto;
+        padding: 4px;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+    .gear-at-textarea::after{
+        content: attr(data-beforeContent);
+        color: #ccc;
+    }
+    .gear-at-textarea:focus{
+        border-color: #40a9ff;
+    }
+
+
+
+    /*.user-info{
+        position: absolute;
+        z-index: 9;
+        left: 0;
+        top: 100%;
+        display: none;
+
+        .user-info-box{
+            width: 240px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow: 0 2px 16px 0 rgba(33, 43, 54, 0.08), 0 1px 3px 0 rgba(64, 66, 69, 0.12), 0 0 0 1px rgba(78, 84, 96, 0.1);
+            background-color: #ffffff;
+            padding: 8px 16px;
+            display: flex;
+        }
+        .user-info-box .imgbox{}
+        .user-info-box img{
+            width: 40px;
+            height: 40px;
+        }
+        .user-info-center{
+            flex: 1;
+            overflow: hidden;
+            padding-left: 12px;
+            box-sizing: border-box;
+        }
+        .user-info-name{
+            font-size: 14px;
+            line-height: 20px;
+            color: #212736;
+        }
+        .user-info-email{
+            font-size: 14px;
+            line-height: 20px;
+            color: #636c81;
+            overflow-wrap: break-word;
+        }
+    }*/
+
+
+
+    .m-span {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        text-align: center;
+        background: #ccc;
+        color: #fff;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        border-radius: 50%;
+    }
+    .m-border {
+        position: absolute;
+        border: 1px solid rgba(33, 39, 54, 0.1);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+}
+
+
+
+
+.atwho-view{
+    width: 240px;
+    max-height: 200px;
+    min-height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 16px 0 rgba(33, 43, 54, 0.08), 0 1px 3px 0 rgba(64, 66, 69, 0.12), 0 0 0 1px rgba(78, 84, 96, 0.1);
+    background-color: #ffffff;
+    border: none;
+}
+.atwho-view ul li{
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 16px;
+    font-size: 14px;
+    color: #212736;
+    box-sizing: border-box;
+    border: none;
+}
+.atwho-view ul li img{
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+}
+.atwho-view ul li >span{
+    margin-right: 8px;
+}
+.atwho-view .cur {
+    background: #f0f7ff;
+    color: #212736;
+}
+.atwho-view .cur strong{
+    color: #36F;
+}
+.gear-user-box{
+    font-size: 14px;
+    color: #2161fd;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+

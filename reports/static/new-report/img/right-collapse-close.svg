@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="50px" viewBox="0 0 9 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>收起</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目详情" transform="translate(-1131.000000, -515.000000)">
+            <g id="Playbook" transform="translate(1131.000000, 56.000000)">
+                <g id="收起" transform="translate(0.000000, 459.000000)">
+                    <polygon id="Rectangle" fill="#FFFFFF" points="0 10 8 1 8 49 0 40"></polygon>
+                    <polygon id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" points="8 1 9 2.48689958e-14 9 50 8 49"></polygon>
+                    <polygon id="Triangle" fill="#9199AB" fill-rule="nonzero" transform="translate(5.000000, 25.000000) rotate(-270.000000) translate(-5.000000, -25.000000) " points="5 23 9 27 1 27"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

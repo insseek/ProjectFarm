@@ -1,0 +1,230 @@
+*{
+    box-sizing: border-box;
+}
+@keyframes clock{
+    0% {transform: rotate(0deg)}
+    10% {transform: rotate(36deg)}
+    20% {transform: rotate(72deg)}
+    30% {transform: rotate(108deg)}
+    40% {transform: rotate(142deg)}
+    50% {transform: rotate(180deg)}
+    60% {transform: rotate(216deg)}
+    70% {transform: rotate(252deg)}
+    80% {transform: rotate(288deg)}
+    90% {transform: rotate(324deg)}
+    100% {transform: rotate(360deg)}
+}
+html{
+    height: 100%;
+}
+body{
+    color: #727681;
+    height: 100%;
+    background: #f5f5f5;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+header{
+    height: 70px;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 30px;
+    position: fixed;
+    top: 0;
+}
+.header-logo{
+    width: 100px;
+    height: 39px;
+    margin-top: 18px;
+}
+.header-text{
+    font-size: 16px;
+    line-height: 70px;
+}
+section{
+    height: 100%;
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+.main-section{
+    height: 100%;
+    .content{
+        height: 100%;
+        background: #fff;
+        text-align: center;
+        border: 1px solid transparent;
+        position: relative;
+        > div{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+        img{
+            width: 237px;
+            height: 179px;
+        }
+        h2{
+            margin-top: 35px;
+            font-size: 24px;
+            color: #131537;
+            font-weight: 400;
+        }
+        p{
+            margin-top: 15px;
+        }
+        .clock{
+            width: 76px;
+            height: 76px;
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translateY(-50%);
+            .clock-bg{
+                width: 76px;
+                height: 76px;
+            }
+            .clock-hour{
+                position: absolute;
+                top: 38%;
+                left: 50%;
+                margin-top: -6px;
+                margin-left: -2px;
+                width: 4px;
+                height: 16px;
+                transform: rotate(360deg);
+                -webkit-transform-origin: center bottom;
+                transform-origin: center bottom;
+                animation: clock 3600s linear infinite;
+                /* Firefox: */
+                -moz-animation: clock 3600s linear infinite;
+                /* Safari 和 Chrome: */
+                -webkit-animation: clock 3600s linear infinite;
+                /* Opera: */
+                -o-animation: clock 3600s linear infinite;
+            }
+            .clock-minute{
+                position: absolute;
+                top: 50%;
+                left: 66%;
+                margin-top: -1.5px;
+                margin-left: -12px;
+                width: 18px;
+                height: 3px;
+                transform: rotate(360deg);
+                -webkit-transform-origin: left center;
+                transform-origin: left center;
+                animation: clock 5s linear infinite;
+                /* Firefox: */
+                -moz-animation: clock 5s linear infinite;
+                /* Safari 和 Chrome: */
+                -webkit-animation: clock 5s linear infinite;
+                /* Opera: */
+                -o-animation: clock s linear infinite;
+            }
+            .clock-sec{
+                position: absolute;
+                top: 49%;
+                left: 30%;
+                margin-left: -7px;
+                margin-top: -1px;
+                width: 22px;
+                height: 3.5px;
+                transform: rotate(360deg);
+                -webkit-transform-origin: right center;
+                transform-origin: right center;
+                animation: clock 2s linear infinite;
+                /* Firefox: */
+                -moz-animation: clock 2s linear infinite;
+                /* Safari 和 Chrome: */
+                -webkit-animation: clock 2s linear infinite;
+                /* Opera: */
+                -o-animation: clock 2s linear infinite;
+            }
+            .clock-center{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -3px;
+                margin-top: -3px;
+                width: 6px;
+                height: 6px;
+            }
+        }
+    }
+}
+footer{
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    p{
+        text-align: center;
+        font-size: 12px;
+        line-height: 50px;
+    }
+}
+.clock-content{
+    position: relative;
+    height: 197px;
+    .pc-img{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width:767px){
+    section{
+        padding: 0;
+    }
+    .main-section{
+        h2{
+            font-size: 18px;
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    .container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (max-width: 414px ) {
+    .main-section .content{
+        p{
+            font-size: 16px;
+        }
+    } 
+}
+@media (max-width: 375px ) {
+
+    .main-section .content{
+        p{
+            font-size: 14px;
+        }
+    } 
+}
+@media (max-width: 375px ) {
+    .main-section .content{
+        >div{
+            h2{
+                font-size: 20px;
+            }
+            p{
+                font-size: 12px;
+            }
+        }
+    } 
+}
+.back-to-home{
+    padding: 4px 16px;
+    background-color: transparent;
+    border-color: #49A3FF;
+    color: #49A3FF;
+}

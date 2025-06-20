@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+{% load sass_tags %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>报告PV UV统计表</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=0"/>
+    <!--引入bootstrap的css文件-->
+    <link href="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <!--引入bootstrap的js文件-->
+    <script src="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js' %}"></script>
+    <meta name="robots" content="NONE,NOARCHIVE"/>
+</head>
+<body>
+<div class="table-responsive" style="padding: 20px">
+    <h4>【{{month_str}}】报告PV UV统计表(PV：{{pv_total}}  UV：{{uv_total}} )</h4>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="min-height: 180px">时间</th>
+            <th>地址</th>
+            <th>报告</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pv in pv_list %}
+        <tr>
+            <td>{{pv.created_date}}</td>
+            {% if pv.address %}
+            <td>{{pv.address}}({{pv.ip_address}})</td>
+            {% else %}
+            <td>{{pv.ip_address}}</td>
+            {% endif %}
+            <td>{{pv.content_object}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

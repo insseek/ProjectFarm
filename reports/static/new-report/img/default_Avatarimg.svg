@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>分组 2 copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="16" cy="16" r="16"></circle>
+        <circle id="path-3" cx="16" cy="16" r="16"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Avatars---头像" transform="translate(-124.000000, -693.000000)">
+            <g id="刷新不出来" transform="translate(48.000000, 621.000000)">
+                <g id="分组-2-copy" transform="translate(76.000000, 72.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#DFE2E8" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <path d="M9.06666667,18.6 L22.9333333,18.6 C25.2897483,18.6 27.2,20.5102517 27.2,22.8666667 L27.2,35.1333333 L4.8,35.1333333 L4.8,22.8666667 C4.8,20.5102517 6.71025173,18.6 9.06666667,18.6 Z M16,16.4666667 C13.0544813,16.4666667 10.6666667,14.078852 10.6666667,11.1333333 C10.6666667,8.18781467 13.0544813,5.8 16,5.8 C18.9455187,5.8 21.3333333,8.18781467 21.3333333,11.1333333 C21.3333333,14.078852 18.9455187,16.4666667 16,16.4666667 Z" id="Mask" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <circle stroke="#DFE2E8" stroke-width="3.2" cx="16" cy="16" r="14.4"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

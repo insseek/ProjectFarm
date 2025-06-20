@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <path id="重做-a" d="M8,5 L12,5 C15.3137085,5 18,7.6862915 18,11 C18,14.3137085 15.3137085,17 12,17 L5,17 L5,15 L12,15 C14.209139,15 16,13.209139 16,11 C16,8.790861 14.209139,7 12,7 L8,7 L8,10 L2,6 L8,2 L8,5 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="重做-b" fill="#fff">
+      <use xlink:href="#重做-a"/>
+    </mask>
+    <use fill="#2161FD" fill-rule="nonzero" transform="matrix(-1 0 0 1 20 0)" xlink:href="#重做-a"/>
+    <g fill="#212736" mask="url(#重做-b)">
+      <rect width="20" height="20"/>
+    </g>
+  </g>
+</svg>

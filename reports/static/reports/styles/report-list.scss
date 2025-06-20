@@ -1,0 +1,369 @@
+.list-control-panel {
+  padding: 16px 20px;
+  background: #FAFAFA;
+  border: 1px solid #ECECEC;
+  height: auto;
+
+  .control-panel-item {
+    margin-bottom: 16px;
+
+    > span {
+      float: left;
+      line-height: 1.5;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .middle-label {
+      line-height: 30px;
+    }
+
+    > div {
+      margin-left: 70px;
+    }
+  }
+
+  > div:last-child {
+    margin-bottom: 0;
+  }
+
+  .search-input {
+    width: 310px;
+    height: 30px;
+    padding-left: 8px;
+  }
+
+}
+
+.reports-list-container {
+  overflow: auto;
+  font-size: 14px;
+  box-shadow: 0 1px 0 0 #e4e6ea, 0 -1px 0 0 #e4e6ea;
+
+  .report-card {
+    padding: 12px;
+    height: auto;
+    margin-top: 16px;
+    min-width: 1000px;
+    position: relative;
+    box-shadow: 0 1px 0 0 #e4e6ea, 0 -1px 0 0 #e4e6ea;
+    background-color: #ffffff;
+  }
+
+  .card-left {
+    // float: left;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%); /* IE 9 */
+    -moz-transform: translateY(-50%); /* Firefox */
+    -webkit-transform: translateY(-50%); /* Safari 和 Chrome */
+    -o-transform: translateY(-50%); /* Opera */
+    width: 142px;
+    // line-height: 104px;
+    text-align: center;
+    height: 100%;
+
+    > a {
+      color: #2161FD;
+      font-size: 14px;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      padding: 0 12px;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%); /* IE 9 */
+      -moz-transform: translate(-50%, -50%); /* Firefox */
+      -webkit-transform: translate(-50%, -50%); /* Safari 和 Chrome */
+      -o-transform: translate(-50%, -50%); /* Opera */
+    }
+
+    .add-tag-btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+      background: #fff;
+      color: #333;
+      border-right: 1px solid #ECECEC;
+      border-bottom: 1px solid #ECECEC;
+      padding: 2px 4px;
+      cursor: pointer;
+    }
+  }
+
+  .card-right {
+    margin-left: 150px;
+
+    .card-right-top {
+      > div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .card-right-top,
+    .card-right-middle {
+      color: #333;
+      margin-bottom: 12px;
+
+      > div {
+        display: inline-block;
+        vertical-align: top;
+        width: 24%;
+        padding-right: 20px;
+
+        > a {
+          color: #2161FD;
+        }
+
+        > .card-item-label {
+          float: left;
+        }
+
+        > div {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    div.card-right-bottom {
+      color: #707070;
+
+      > div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .card-item-label {
+      color: #989898;
+    }
+
+    .report-label-container {
+      white-space: normal;
+
+      em {
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+  .grey-badge {
+    font-size: 12px;
+    color: #333;
+    display: inline-block;
+    border: 1px solid #D1D1D1;
+    border-radius: 2px;
+    font-style: normal;
+    padding: 0 8px;
+    line-height: 1.5;
+    margin-right: 7px;
+  }
+
+  .versions-label {
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 8px;
+    font-style: normal;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 8px;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: #2161FD;
+    }
+  }
+
+  .versions-label.active {
+    border-color: #2161FD;
+    color: #2161FD;
+  }
+}
+
+.add-skills-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+  position: relative;
+  border: 1px solid #ECECEC;
+  height: 26px;
+
+  input {
+    width: 100%;
+    height: 24px;
+    padding-right: 60px;
+    border: 0;
+    line-height: 24px;
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    border: 0;
+    color: #333;
+    border-left: 1px solid #ECECEC;
+  }
+}
+
+.edit-report-tag-modal {
+  .filter-item {
+    border: 1px solid #ECECEC;
+  }
+
+  .modal-header {
+    .gear-model-title {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      word-wrap: break-word;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid #ECECEC;
+  }
+}
+
+
+//编辑报告标签弹框
+.creat-report-modal-center {
+
+  .list-item {
+    margin: 10px 0;
+    display: flex;
+
+    .label {
+      width: 88px;
+      line-height: 20px;
+      font-size: 14px;
+      color: #636c81;
+
+      span {
+        color: #f5121d;
+      }
+    }
+
+    .list {
+      flex: 1;
+
+      .list-div {
+        float: left;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: solid 1px #dfe2e8;
+        font-size: 12px;
+        color: #454c5c;
+        cursor: pointer;
+
+        .del-item {
+          margin-left: 4px;
+          cursor: pointer;
+        }
+
+        &.active {
+          background: #2161FD;
+          border: 1px solid #2161FD;
+          color: #fff;
+        }
+      }
+
+      .add-box {
+        float: left;
+        margin-right: 16px;
+        margin-bottom: 16px;
+
+        > input {
+          width: 83px;
+          border-radius: 2px;
+          border: solid 1px #dfe2e8;
+          font-size: 12px;
+          float: left;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        > button {
+          width: 40px;
+          height: 22px;
+          border-radius: 2px;
+          border: solid 1px #dfe2e8;
+          background-color: #f0f2f5;
+          outline: none;
+          float: left;
+          font-size: 12px;
+          margin-left: -1px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      > textarea {
+        width: 100%;
+        height: 32px;
+        border-radius: 2px;
+        border: solid 1px #e4e6ea;
+        resize: none;
+      }
+    }
+  }
+}
+
+// 克隆报告modal
+.workorder-modal {
+  padding: 20px 20px 0;
+  height: auto;
+  background: #fff;
+
+  .workorder-form-label {
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .level-select {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
+    border: 1px solid #ECECEC;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+      border-color: #2161FD;
+    }
+  }
+
+  .level-select:nth-child(2) {
+    margin: 0 5%;
+  }
+
+  .form-group {
+    min-height: 39px;
+  }
+
+}
+
+.workorder-modal-footer {
+  padding: 16px 20px 16px;
+  border-top: 1px solid #d1d1d1;
+
+  .btn {
+    margin-left: 12px;
+  }
+}

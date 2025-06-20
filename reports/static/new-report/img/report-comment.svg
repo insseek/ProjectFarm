@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <path id="评论-a" d="M4,4 L4,13 L6.625,13 L7.38539864,13 L10,15.3240901 L12.6146014,13 L16,13 L16,4 L4,4 Z M2,2 L18,2 L18,15 L13.375,15 L10,18 L6.625,15 L2,15 L2,2 Z M6,6 L14,6 L14,8 L6,8 L6,6 Z M6,9 L12,9 L12,11 L6,11 L6,9 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="评论-b" fill="#fff">
+      <use xlink:href="#评论-a"/>
+    </mask>
+    <use fill="#212736" fill-rule="nonzero" xlink:href="#评论-a"/>
+    <g fill="#212736" mask="url(#评论-b)">
+      <rect width="20" height="20"/>
+    </g>
+  </g>
+</svg>

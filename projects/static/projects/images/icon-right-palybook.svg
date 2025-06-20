@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>palybook</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="0%" x2="0%" y2="91.2662695%" id="linearGradient-1">
+            <stop stop-color="#459AFF" offset="0%"></stop>
+            <stop stop-color="#2161FD" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="2 2 9 4 16 2 16 14 9 16 2 14"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="💻项目详情" transform="translate(-1396.000000, -72.000000)">
+            <g id="分组-8" transform="translate(1384.000000, 56.000000)">
+                <g id="palybook" transform="translate(12.000000, 16.000000)">
+                    <circle id="椭圆形" fill="#F4F6F8" fill-rule="nonzero" cx="16" cy="16" r="16"></circle>
+                    <g id="分组-7" transform="translate(7.000000, 7.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="Mask" fill="url(#linearGradient-1)" fill-rule="nonzero" xlink:href="#path-2"></use>
+                        <rect id="矩形" fill-opacity="0.199926404" fill="#212736" fill-rule="nonzero" mask="url(#mask-3)" x="8" y="3" width="2" height="14"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

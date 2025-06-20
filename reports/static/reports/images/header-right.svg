@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="251" height="210" viewBox="0 0 251 210">
+  <defs>
+    <rect id="分组-1-b" width="101.732" height="130.209" x="0" y="0" rx="6.768"/>
+    <filter id="分组-1-a" width="116.7%" height="113.1%" x="-8.4%" y="-5%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.148824232   0 0 0 0 0.29962576   0 0 0 0 0.667204484  0 0 0 0.157506556 0"/>
+    </filter>
+    <linearGradient id="分组-1-c" x1="50%" x2="50%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#09E3C3"/>
+      <stop offset="100%" stop-color="#4CFCFF"/>
+    </linearGradient>
+    <rect id="分组-1-e" width="101.732" height="130.209" x="0" y="0" rx="6.768"/>
+    <filter id="分组-1-d" width="116.7%" height="113.1%" x="-8.4%" y="-5%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.148824232   0 0 0 0 0.29962576   0 0 0 0 0.667204484  0 0 0 0.157506556 0"/>
+    </filter>
+    <linearGradient id="分组-1-f" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEA7D"/>
+      <stop offset="100%" stop-color="#FFD42D"/>
+    </linearGradient>
+    <rect id="分组-1-h" width="129.991" height="175.117" x="0" y=".369" rx="6.768"/>
+    <filter id="分组-1-g" width="136.2%" height="129.7%" x="-18.1%" y="-13.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="shadowSpreadOuter1"/>
+      <feOffset dy="5" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.148824232   0 0 0 0 0.29962576   0 0 0 0 0.667204484  0 0 0 0.0963723776 0"/>
+      <feOffset in="SourceAlpha" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="5.5"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.149019608   0 0 0 0 0.298039216   0 0 0 0 0.666666667  0 0 0 0.0489783654 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="分组-1-i" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#459AFF"/>
+      <stop offset="100%" stop-color="#2161FD"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(0 11)">
+    <ellipse cx="125.925" cy="175.168" fill="#000" opacity=".163" rx="125" ry="23" style="mix-blend-mode:soft-light"/>
+    <g transform="translate(21)">
+      <g transform="translate(0 45.557)">
+        <use fill="#000" filter="url(#分组-1-a)" xlink:href="#分组-1-b"/>
+        <use fill="#FFF" xlink:href="#分组-1-b"/>
+        <g transform="translate(18.65 61.141)">
+          <rect width="63.3" height="47.554" fill="#FFF" stroke="#EBEEF6" stroke-width="3.384" rx="2.256"/>
+          <rect width="3.391" height="47.554" x="14.129" fill="#EBEEF6"/>
+          <rect width="3.391" height="47.554" x="29.954" fill="#EBEEF6"/>
+          <rect width="3.391" height="47.554" x="45.779" fill="#EBEEF6"/>
+          <rect width="64.43" height="3.397" y="14.153" fill="#EBEEF6"/>
+          <rect width="64.43" height="3.397" y="30.005" fill="#EBEEF6"/>
+        </g>
+        <rect width="22.607" height="27.174" x="16.955" y="16.984" fill="url(#分组-1-c)" rx="4.512"/>
+      </g>
+      <g transform="translate(109.268 45.557)">
+        <use fill="#000" filter="url(#分组-1-d)" xlink:href="#分组-1-e"/>
+        <use fill="#FFF" xlink:href="#分组-1-e"/>
+        <g transform="translate(16.955 61.141)">
+          <rect width="67.821" height="50.951" fill="#EBEEF6" rx="4.512"/>
+          <path fill="#FFF" d="M24.5852679,24.3433458 L37.584375,29.7215269 L55.9526786,12.1716729 L55.9526786,41.8931998 L11.86875,41.8931998 L24.5852679,24.3433458 Z M16.9553571,19.248227 C14.1461016,19.248227 11.86875,16.9670645 11.86875,14.1531081 C11.86875,11.3391516 14.1461016,9.05798915 16.9553571,9.05798915 C19.7646127,9.05798915 22.0419643,11.3391516 22.0419643,14.1531081 C22.0419643,16.9670645 19.7646127,19.248227 16.9553571,19.248227 Z"/>
+        </g>
+        <g transform="translate(16.955 18.83)">
+          <rect width="67.821" height="50.951" fill="#EBEEF6" rx="4.512"/>
+          <path fill="#FFF" d="M24.5852679,24.3433458 L37.584375,29.7215269 L55.9526786,12.1716729 L55.9526786,41.8931998 L11.86875,41.8931998 L24.5852679,24.3433458 Z M16.9553571,19.248227 C14.1461016,19.248227 11.86875,16.9670645 11.86875,14.1531081 C11.86875,11.3391516 14.1461016,9.05798915 16.9553571,9.05798915 C19.7646127,9.05798915 22.0419643,11.3391516 22.0419643,14.1531081 C22.0419643,16.9670645 19.7646127,19.248227 16.9553571,19.248227 Z"/>
+        </g>
+        <rect width="22.607" height="27.174" x="16.955" y="16.984" fill="url(#分组-1-f)" rx="4.512"/>
+      </g>
+      <g transform="translate(43.909)">
+        <use fill="#000" filter="url(#分组-1-g)" xlink:href="#分组-1-h"/>
+        <use fill="#FFF" xlink:href="#分组-1-h"/>
+        <rect width="84.777" height="9.058" x="22.607" y="96.801" fill="#EBEEF6" rx="4.512"/>
+        <rect width="84.777" height="9.058" x="22.607" y="122.843" fill="#EBEEF6" rx="4.512"/>
+        <rect width="84.777" height="9.058" x="22.607" y="149.121" fill="#EBEEF6" rx="4.512"/>
+        <rect width="50.866" height="9.058" x="22.607" y="70.759" fill="#EBEEF6" rx="4.512"/>
+        <rect width="28.259" height="33.967" x="22.607" y="19.808" fill="url(#分组-1-i)" rx="4.512"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description"
+          content="{{report.version}} · {{report.date}} · {{report.author}}{{ report.report_title }}项目反馈报告"
+    >
+
+    <meta name="author" content="">
+    <title>{{ report.report_title }}项目反馈报告</title>
+
+
+    {% load staticfiles %}
+    {% load sass_tags %}
+    {% load mytags %}
+
+    <script src="{% static 'farm-package/cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js' %}"></script>
+    <!-- jQuery -->
+    <script src="{% static 'farm-package/cdn.bootcss.com/jquery/2.2.4/jquery.min.js' %}"></script>
+    <!-- viewer -->
+    <link rel="stylesheet" href="{% static 'reports/js/viewer/viewer.css' %}">
+    <script src="{% static 'reports/js/viewer/viewer.js' %}"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'reports/images/favicon.ico' %}"/>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="{% static 'reports/styles/ie10-viewport-bug-workaround.css' %}"/>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/report-view.scss' %}?v=3.005"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--[if lt IE 10]>
+    <script src="{% static 'reports/ie10-viewport-bug-workaround.js' %}?v=3.005" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="stylesheet"
+          href="{% static 'farm-package/cdn.bootcss.com/bootstrap-star-rating/css/star-rating.min.css' %}"/>
+    <!--<link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/report-pdf.scss' %}?v=3.005"
+          media="print"/>-->
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/report-pdf-new.scss' %}?v=3.005"
+          media="print"/>
+    <link rel="stylesheet" href="{% static 'farm-package/mindmap/css/view.mindmap.css' %}?v=3.005">
+    <link rel="stylesheet" href="{% sass_src 'reports/styles/report-mindmap.scss' %}?v=3.005" type="text/css">
+</head>
+
+{% with login_user=request.user %}
+
+<body class="face-hidden" data-spy="scroll" data-target="#content-scrollspy">
+
+<!--pdf封面-->
+<div class="pdf-header">
+    <div class="print-header-top">
+        <h1>
+            <span class="report-header-name">{{ report.report_title }}</span>
+            <p class="visible-xs-block"></p>
+            <span class="report-header-function">项目反馈报告</span>
+        </h1>
+        <h4 class="print-version-info">{{ report.version }} · {{ report.date }} · {{ report.author }}</h4>
+    </div>
+    <div class="print-header-middle"></div>
+    <div class="print-header-bottom">
+        <img src="{% static 'reports/images/print-new-logo.png' %}" alt="">
+    </div>
+</div>
+
+
+<header class="header pdf-hide">
+    <div class="header-contianer">
+        <div class="header-left">
+            <a href="https://chilunyc.com">
+                <img class="header-logo" src="{% static 'reports/images/gear-logo-d@2x.png' %}">
+            </a>
+            {% if is_preview %}
+            <span class="flag-span">{{ report.version }}预览版本</span>
+            {% endif %}
+        </div>
+        <div class="header-right">
+            当前报告版本：
+            <span class="header-version">
+                 {{ report.version }}
+                </span>
+        </div>
+    </div>
+    <div class="header-contianer-mobile">
+        <div class="header-left">
+            <a href="https://chilunyc.com">
+                <img class="header-logo" src="{% static 'reports/images/gear-logo-d@2x.png' %}">
+            </a>
+            {% if is_preview %}
+            <span class="flag-span">{{ report.version }}预览版本</span>
+            {% endif %}
+            <span class="flag-span-mobile">{% if is_preview %}预览{% endif %}版本{{ report.version }}</span>
+
+        </div>
+        <div class="header-right">
+                <span class="header-taggle" id="nav-taggle-btn">
+                    <img src="{% static 'reports/images/nav-taggle-btn.svg' %}">
+                </span>
+        </div>
+    </div>
+</header>
+
+<nav class="content-nav pdf-hide" id="content-scrollspy">
+    <ul class="nav nav-box ishide">
+        <li class="content-tip">
+            <p>
+                <span class="nav-icon"></span>
+                <span class="nav-text">报告目录</span>
+            </p>
+        </li>
+        <li class="">
+            <a href="#version_content-section">
+                <span class="nav-icon"></span>
+                <span class="nav-text">版本历史</span>
+            </a>
+        </li>
+        {% for content in report.content_list %}
+        <li class="">
+            <a href="#{{content.uid}}">
+                <span class="nav-icon"></span>
+                <span class="nav-text">{{content.title}}</span>
+            </a>
+        </li>
+        {% endfor %}
+
+        {% if report.show_plan %}
+        {% if report.plans or report.quotation_plans %}
+        <li>
+            <a href="#time-price-section">
+                <span class="nav-icon"></span>
+                <span class="nav-text">时间及金额预估</span>
+            </a>
+        </li>
+        {% endif %}
+        {% endif %}
+        <li>
+            <a href="#report-notice">
+                <span class="nav-icon"></span>
+                <span class="nav-text">注意事项</span>
+            </a>
+        </li>
+
+        {% if report.show_services %}
+        <li>
+            <a href="#service-scope-section">
+                <span class="nav-icon"></span>
+                <span class="nav-text">服务范围</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if report.show_next %}
+        <li>
+            <a href="#next-step-section">
+                <span class="nav-icon"></span>
+                <span class="nav-text">下一步计划</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+
+<div class="center-container">
+    {% if is_preview %}
+    <section class="center-section info-box pdf-hide">
+        <div class="info-box-left">
+            <div class="flex-item">
+                <div class="flex-item-label">产品形态：</div>
+                <div class="flex-item-text">{{report.application_platforms_text}}</div>
+            </div>
+            <div class="flex-item">
+                <div class="flex-item-label">所属行业：</div>
+                <div class="flex-item-text">{{report.industries_text}}</div>
+            </div>
+            <div class="flex-item">
+                <div class="flex-item-label">产品分类：</div>
+                <div class="flex-item-text">{{report.product_types_text}}</div>
+            </div>
+            {% if report.proposal %}
+            <div class="flex-item">
+                <div class="flex-item-label">需求名称：</div>
+                <div class="flex-item-text">
+                    <a href="/proposals/detail/?proposalId={{report.proposal.id}}" target="_blank">
+                        【{{ report.proposal.id }}】{{ report.proposal.name }}
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="info-box-right">
+            {% if report.is_public and not report.is_expired %}
+            <a href="{{report.report_url}}" target="_blank">
+                <button class="report-button def-btn">正式报告</button>
+            </a>
+            {% endif %}
+            {% if report.creation_source == 'farm' and request.user|has_func_perm:"clone_proposal_report" %}
+            <button class="report-button green-btn" id="cloneReportBtn">克隆报告</button>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+
+    <section class="center-section rich-box">
+        <!--报告头 标题 版本历史开始-->
+        <div class="center-section-division title-box pdf-hide">
+            <h1 class="title">
+                <span class="title-text">{{report.report_title}}</span>
+                <span class="title-flag">项目反馈报告</span>
+            </h1>
+            <div class="rich-vs">
+                <span>产品经理：{{report.author}}</span>
+                <span>版本：{{report.version}}</span>
+                <span>时间：{{report.date}}</span>
+            </div>
+        </div>
+        <div class="center-section-division title-box-mobile pdf-hide">
+            <div class="title">
+                <span class="title-text">{{report.report_title}}</span>
+                <span class="title-flag">项目反馈报告</span>
+                <div class="texts">{{report.author}} {{report.date}}</div>
+            </div>
+            <div class="right-img">
+                <img src="{% static 'reports/images/header-right.svg' %}" alt="">
+            </div>
+        </div>
+
+        <div id="version_content-section" class="center-section-division">
+            <h2>历史版本</h2>
+            <div class="history-vs">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>日期</th>
+                        <th>制作人</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for version_record in report.version_content %}
+                    <tr>
+                        <td>{{version_record.version}}</td>
+                        <td>{{version_record.date}}</td>
+                        <td>{{version_record.author}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--报告头 标题 版本历史结束-->
+
+        <!--打印目录-->
+        <nav class="pdf-nav">
+            <ul class="nav nav-box ishide">
+                <li class="content-tip">
+                    <p>
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">报告目录</span>
+                    </p>
+                </li>
+                <li class="">
+                    <a href="#version_content-section">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">版本历史</span>
+                    </a>
+                </li>
+                {% for content in report.content_list %}
+                <li class="">
+                    <a href="#{{content.uid}}">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">{{content.title}}</span>
+                    </a>
+                </li>
+                {% endfor %}
+
+                {% if report.show_plan %}
+                {% if report.plans or report.quotation_plans %}
+                <li>
+                    <a href="#time-price-section">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">时间及金额预估</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% endif %}
+                <li>
+                    <a href="#report-notice">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">注意事项</span>
+                    </a>
+                </li>
+
+                {% if report.show_services %}
+                <li>
+                    <a href="#service-scope-section">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">服务范围</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if report.show_next %}
+                <li>
+                    <a href="#next-step-section">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">下一步计划</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <!--报告主要内容开始-->
+        <div class="center-section-division rich-center">
+            {% for content in report.content_list %}
+            <section class="content-section" id="{{content.uid}}">
+                <div>
+                    <h2>
+                        {{content.title}}
+                    </h2>
+                    <p class="line">
+                    </p>
+                    <div>
+                        {{content.content | safe}}
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+        <!--报告主要内容结束-->
+
+        {% if report.show_plan %}
+        {% if report.plans or report.quotation_plans %}
+        <div class="center-section-division time-price" id="time-price-section">
+            <h2>时间及金额预估</h2>
+
+            {% for plan in report.plans %}
+
+
+            <div class="item-div">
+
+                {% if plan.title %}
+                <div class="item-title">{{plan.title}}</div>
+                {% else %}
+                <div class="item-title">报价方案</div>
+                {% endif %}
+
+                <div class="item-flex print-hidden">
+                    <div class="item-flex-left">
+                        <div class="num-box">¥{{plan.price}}</div>
+                        <div>项目报价</div>
+                    </div>
+                    <div class="item-flex-right">
+                        <div class="text-box text-box-mobile">
+                            <span class="text-box-lable">项目报价：</span>
+                            <span class="text-box-fs">¥{{plan.price}}</span>
+                        </div>
+                        {% for name,content in plan.items %}
+                        <div class="text-box">
+                            <span class="text-box-lable">{{name}}：</span>
+                            <span class="text-box-fs">{{content}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <div class="item-flex print-only-show">
+                    <div class="item-flex-right">
+                        <div class="text-box text-box-mobile" style="display: block">
+                            <span class="text-box-lable">项目报价：</span>
+                            <span class="text-box-fs">¥{{plan.price}}</span>
+                        </div>
+                        {% for name,content in plan.items %}
+                        <div class="text-box">
+                            <span class="text-box-lable">{{name}}：</span>
+                            <span class="text-box-fs">{{content}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+
+            {% endfor %}
+
+
+            {% for plan in report.quotation_plans %}
+            <div class="item-div">
+                {% if plan.title %}
+                <div class="item-title">{{plan.title}}</div>
+                {% else %}
+                <div class="item-title">报价方案</div>
+                {% endif %}
+
+                <div class="item-flex print-hidden">
+                    <div class="item-flex-left">
+                        <div class="num-box">¥{{plan.price}}</div>
+                        <div>项目报价</div>
+                    </div>
+                    <div class="item-flex-right">
+                        <div class="text-box text-box-mobile">
+                            <span class="text-box-lable">项目报价：</span>
+                            <span class="text-box-fs">¥{{plan.price}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">预计工期：</span>
+                            <span class="text-box-fs">{{plan.period}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">项目包含：</span>
+                            <span class="text-box-fs">{{plan.projects}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">服务范围：</span>
+                            <span class="text-box-fs">{{plan.services}}</span>
+                        </div>
+                    </div>
+                    {% if is_preview and report.creation_source == 'farm' and plan.price_detail %}
+                    <div class="icon-pull-down"></div>
+                    {% endif %}
+                </div>
+                {% if is_preview and report.creation_source == 'farm' and plan.price_detail %}
+                <div class="estimate-data-box print-hidden">
+                    <div class="estimate-left">
+                        <div class="price-text">¥{{plan.price_detail.sum_num}}</div>
+                        <div class="">总报价</div>
+                    </div>
+                    <div class="estimate-right">
+                        {% for role in plan.price_detail.listData %}
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">{{role.name}}（{{role.time}}周 @ ¥{{role.cost}}/月）</div>
+                            <div class="estimate-item-text">{% widthratio role.cost 4.3 role.time %}</div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">个人所得税（{{plan.price_detail.tax}}%）</div>
+                            <div class="estimate-item-text">¥{{plan.price_detail.tax_num}}</div>
+                        </div>
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">固定成本</div>
+                            <div class="estimate-item-text">¥{{plan.price_detail.cost}}</div>
+                        </div>
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">齿轮提成（{{plan.price_detail.deduction}}%）</div>
+                            <div class="estimate-item-text">¥{{plan.price_detail.deduction_num}}</div>
+                        </div>
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">介绍费（{{plan.price_detail.referral}}%）</div>
+                            <div class="estimate-item-text">¥{{plan.price_detail.referral_num}}</div>
+                        </div>
+                        <div class="estimate-item">
+                            <div class="estimate-item-label">税点（{{plan.price_detail.sum_tax_point}}%）</div>
+                            <div class="estimate-item-text">¥{{plan.price_detail.sum_tax_num}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="item-flex print-only-show">
+                    <div class="item-flex-right">
+                        <div class="text-box text-box-mobile" style="display: block">
+                            <span class="text-box-lable">项目报价：</span>
+                            <span class="text-box-fs">¥{{plan.price}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">预计工期：</span>
+                            <span class="text-box-fs">{{plan.period}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">项目包含：</span>
+                            <span class="text-box-fs">{{plan.projects}}</span>
+                        </div>
+                        <div class="text-box">
+                            <span class="text-box-lable">服务范围：</span>
+                            <span class="text-box-fs">{{plan.services}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+        {% endif %}
+        {% endif %}
+
+
+        <div class="center-section-division attention-notice" id="report-notice">
+            <h2>注意事项</h2>
+            <img class="print-image" src="{% static 'reports/images/print-notice.png' %}" alt="">
+            <div class="attention-notice-box print-hidden">
+                <div class="notice-item">
+                    <div class="notice-item-left">
+                        <img class="time-icon" src="/static/reports/images/report-time-icon@2x.png" alt="">
+                    </div>
+                    <div class="notice-item-right">
+                        <div class="notice-item-title">报告有效期</div>
+                        <div class="notice-item-text">
+                            齿轮易创提供的报价和反馈有效时间为 2 周，超过时间我们将重新评估项目细节。<br/>
+                            在此期间，若您有任何疑问请随时联系我们。
+                        </div>
+                    </div>
+                </div>
+                <div class="notice-item notice-item2">
+                    <div class="notice-item-left">
+                        <img class="time-icon" src="/static/reports/images/report-price-icon@2x.png" alt="">
+                    </div>
+                    <div class="notice-item-right">
+                        <div class="notice-item-title">报价仅是预估</div>
+                        <div class="notice-item-text">
+                            以上工期和金额仅为预估，会以详细讨论后的确切功能内容来确定。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if report.show_services %}
+        <div class="center-section-division service-scope" id="service-scope-section">
+            <h2>服务范围</h2>
+            <div class="service-text">
+                您的项目将由一名产品经理全程跟进，包括需求梳理，原型设计，文档撰写，项目管理，保证项目高质量按时完成。项目完成后，您将会收到以下内容：
+            </div>
+            <img class="print-image" src="{% static 'reports/images/print-server@2x.png' %}" alt="">
+            <div class="service-scope-box print-hidden">
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s1@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">1.需求文档</div>
+                        <div class="service-scope-item-text">关于您项目的产品需求文档</div>
+                    </div>
+                </div>
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s2@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">2.产品设计原型</div>
+                        <div class="service-scope-item-text">一套完整的项目原型和设计源文件</div>
+                    </div>
+                </div>
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s3@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">3.项目进度报告</div>
+                        <div class="service-scope-item-text">帮助您在项目进行中随时了解项目进展情况</div>
+                    </div>
+                </div>
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s4@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">4.源代码</div>
+                        <div class="service-scope-item-text">项目源代码和开发所使用的相关材料源文件</div>
+                    </div>
+                </div>
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s5@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">5.技术支持</div>
+                        <div class="service-scope-item-text">架构方案文档以及服务器信息等重要事项</div>
+                    </div>
+                </div>
+                <div class="service-scope-item">
+                    <div class="service-scope-item-left">
+                        <img src="{% static 'reports/images/icon-s6@2x.png' %}"/>
+                    </div>
+                    <div class="service-scope-item-right">
+                        <div class="service-scope-item-title">6.保障</div>
+                        <div class="service-scope-item-text">提供后期一个月的bug修复保障</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        {% if report.show_next %}
+        <div class="center-section-division next-plan" id="next-step-section">
+            <h2>下一步计划</h2>
+            <img class="print-image" src="{% static 'reports/images/print-next@2x.png' %}" alt="">
+            <div class="plan-center print-hidden">
+                <img class="next-png" src="{% static 'reports/images/next-bg@2x.png' %}"/>
+                <div class="plan-list">
+                    <div class="plan-list-box">
+                        <div class="plan-list-title">第一步</div>
+                        <div class="plan-list-text">进行需求梳理，确定开发时间</div>
+                    </div>
+                    <div class="plan-list-img">
+                        <img src="{% static 'reports/images/icon-next01@2x.png' %}"/>
+                    </div>
+                    <div class="flag-icon"></div>
+                </div>
+
+                <div class="plan-list ass-right">
+                    <div class="plan-list-img">
+                        <img src="{% static 'reports/images/icon-next02@2x.png' %}"/>
+                    </div>
+                    <div class="plan-list-box">
+                        <div class="plan-list-title">第二步</div>
+                        <div class="plan-list-text">确定合作意向，并签订合同</div>
+                    </div>
+                    <div class="flag-icon"></div>
+                </div>
+
+                <div class="plan-list">
+                    <div class="plan-list-box">
+                        <div class="plan-list-title">第三步</div>
+                        <div class="plan-list-text">根据合同支付第一部分款项</div>
+                    </div>
+                    <div class="plan-list-img">
+                        <img src="{% static 'reports/images/icon-next03@2x.png' %}"/>
+                    </div>
+                    <div class="flag-icon"></div>
+                </div>
+
+                <div class="plan-list ass-right">
+                    <div class="plan-list-img">
+                        <img src="{% static 'reports/images/icon-next04@2x.png' %}"/>
+                    </div>
+                    <div class="plan-list-box">
+                        <div class="plan-list-title">第四步</div>
+                        <div class="plan-list-text">开始第一个milestone</div>
+                    </div>
+                    <div class="flag-icon"></div>
+                </div>
+
+            </div>
+            <div class="next-mobeli-box">
+                <div class="mobeli-left-line"></div>
+                <div class="mobeli-right-box">
+                    <div class="mobeli-box-item">
+                        <div class="mobeli-box-item-dot"></div>
+                        <div class="mobeli-box-item-text">
+                            <span>第一步：</span>
+                            进行需求梳理，确定开发时间
+                        </div>
+                    </div>
+                    <div class="mobeli-box-item">
+                        <div class="mobeli-box-item-dot"></div>
+                        <div class="mobeli-box-item-text">
+                            <span>第二步：</span>
+                            确定合作意向，并签订合同
+                        </div>
+                    </div>
+                    <div class="mobeli-box-item">
+                        <div class="mobeli-box-item-dot"></div>
+                        <div class="mobeli-box-item-text">
+                            <span>第三步：</span>
+                            根据合同支付第一部分款项
+                        </div>
+                    </div>
+                    <div class="mobeli-box-item">
+                        <div class="mobeli-box-item-dot"></div>
+                        <div class="mobeli-box-item-text">
+                            <span>第四步：</span>
+                            开始第一个milestone
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class='center-section-division rate-box print-hidden'>
+            <div class="rate-box-left">
+                <img class="" src="/static/reports/images/rate-new-bg.svg" alt="">
+            </div>
+            <div class="rate-box-right">
+                <div class="rate-box-title">报告打分</div>
+                <div class="rate-box-text">为了能够让我们提供更好的报告，请您给这个报告打分</div>
+                <input type="text" id="report-rating" class="kv-fa rating-loading" data-size="xs" title="">
+                <div class="rate-btn-group">
+                    <button class="btn rate-btn" disabled id="rate-ok-btn">确认</button>
+                    <button class="btn rate-btn" id="rate-cancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<footer class="footer print-hidden">
+    © 2019北京齿轮易创科技有限公司 | 京ICP备16038005号-1
+</footer>
+
+{% if is_preview %}
+<div class="preview-version">
+    v1.0
+    预览报告
+    <span style="font-size: 12px;">内部预览 客户请发正式报告链接</span>
+</div>
+{% endif %}
+
+<div class="right-btn">
+    <div class="go-top">
+        <div>
+            <a href="#">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--封面-->
+<div class="cover-mobile ph-screen">
+    <div class="cover-mobile-center">
+        <div class="cover-mobile-center-box">
+            <img class="ph-screen-img" src="{% static 'reports/images/report-index-mobile.svg' %}" alt="">
+            <div class="ph-screen-title">{{ report.report_title }}</br>项目反馈报告</div>
+            <div class="ph-screen-text">
+                <span>{{ report.author }}</span>
+                <span>{{ report.date }}</span>
+            </div>
+            <button class="ph-screen-btn">点击查看</button>
+        </div>
+    </div>
+    <div class="cover-footer">报告由齿轮易创提供</div>
+</div>
+
+
+<!--脑图弹框-->
+<div class="modal-svg-div">
+    <div class="modal-svg">
+        <div class="modal-svg-top">
+            <div class="modal-svg-close">✕</div>
+            <div class="modal-svg-plotting">
+                <div class="modal-svg-btn modal-svg-subtract">-</div>
+                <div class="modal-svg-num"><span>100</span>%</div>
+                <div class="modal-svg-btn modal-svg-add">+</div>
+            </div>
+        </div>
+        <div class="modal-svg-center" id="modalSvgCenter">
+
+        </div>
+    </div>
+</div>
+
+<!--脑图展示model-->
+<div class="modal mindmap-modal" id="mindmap-modal" tabindex="-1" role="dialog">
+    <div class="modal-content mindmap-modal-content" id="mindmap-modal-content">
+    </div>
+</div>
+
+<!-- 克隆报告 -->
+{% if report.creation_source == 'farm' and is_preview and request.user|has_func_perm:"clone_proposal_report" %}
+<div id="cloneReportModal" class="modal report-clone-modal" tabindex="-1" role="dialog"
+     aria-labelledby="addTaskAnywhereModal">
+    <div class="modal-box">
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <span>选择克隆到哪个需求</span>
+                <span class="pull-right close-btn quick-add-task-close">&times;</span>
+            </div>
+            <div class="modal-content-body">
+                <div class="quick-add-task-container">
+                    <div class="form-content">
+                        <div class="reference-project">
+                            <input id="referenceProject" autofocus autoComplete="off" placeholder="选择需求" value=""
+                                   type="text"/>
+                            <ul id="refProjectAndPropsal" class="suggest-container hidden"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content-footer">
+                <button id="addTaskButton" class="btn btn-primary pull-right">确认</button>
+                <button id="cancelTaskButton" class="btn close-btn quick-add-task-close btn btn-default pull-right ">
+                    取消
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+</body>
+{% endwith %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'farm-package/cdn.bootcss.com/bootstrap-star-rating/js/star-rating.min.js' %}?v=3.005"></script>
+<script src="{% static 'farm-package/timeme.min.js' %}" type="text/javascript"></script>
+<script type="text/javascript">
+    const PageData = {
+        reportData: JSON.parse('{{ report_data_str|safe }}')
+    };
+    const objectData = {
+        app_label: 'reports',
+        model: 'report',
+        object_id: "{{report.id}}",
+
+        objectName: "报告:{{report.title}}",
+    };
+    const reportData = PageData.reportData;
+    let wxTitle = '{{report.report_title}}项目反馈报告';
+    let wxDesc = '{{report.version}} · {{report.date}} · {{report.author}}';
+    const wxShareData = {
+        title: wxTitle,
+        desc: wxDesc,
+        imgUrl: 'https://cdn.gear.chilunyc.com/static/homepage/images/report-share.png',
+        appId: '{{wx_data.appId}}',
+        timestamp: '{{wx_data.timestamp}}',
+        nonceStr: '{{wx_data.nonceStr}}',
+        signature: '{{wx_data.signature}}',
+    };
+</script>
+<script src="{% static 'farm-package/common_utils.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'farm-package/wechat-share.js' %}?v=3.005" type="text/javascript"></script>
+
+<script src="{% static 'farm-package/logged_user_perm.js' %}"></script>
+<script src="{% static 'reports/js/report-view.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'reports/js/report_browsing_history.js' %}?v=7.029" type="text/javascript"></script>
+
+<script src="{% static 'farm-package/mindmap/js/d3.v3.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'farm-package/mindmap/js/d3-flextree.js' %}" type="text/javascript"></script>
+<script src="{% static 'farm-package/mindmap/js/view.mindmap.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'reports/js/report-mindmap.js' %}?v=3.005" type="text/javascript"></script>
+
+{% if report.creation_source == 'farm' and is_preview %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/clone-report.scss' %}?v=3.005">
+<script src="{% static 'reports/js/clone_report.js' %}?v=2.001"></script>
+{% endif %}
+</html>

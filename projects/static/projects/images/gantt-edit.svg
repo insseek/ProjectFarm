@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="22px" viewBox="0 0 20 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>button-修改</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目甘特图-新建项目甘特图" transform="translate(-1271.000000, -87.000000)">
+            <g id="Group-9" transform="translate(1220.000000, 83.000000)">
+                <g id="button-修改" transform="translate(46.000000, 0.000000)">
+                    <rect id="Rectangle-2" x="0" y="0" width="30" height="30" rx="2"></rect>
+                    <rect id="Rectangle-15" fill="#333333" x="5" y="4" width="20" height="2"></rect>
+                    <rect id="Rectangle-15-Copy-3" fill="#333333" x="17" y="10" width="8" height="2"></rect>
+                    <rect id="Rectangle-15-Copy-4" fill="#333333" x="17" y="14" width="8" height="2"></rect>
+                    <rect id="Rectangle-15-Copy-6" fill="#333333" x="5" y="14" width="4" height="2"></rect>
+                    <polygon id="Triangle" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15 15 9 19 9 11"></polygon>
+                    <rect id="Rectangle-15-Copy-5" fill="#333333" x="17" y="18" width="8" height="2"></rect>
+                    <rect id="Rectangle-15-Copy-2" fill="#333333" x="5" y="24" width="20" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

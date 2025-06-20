@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="138" viewBox="0 0 138 138">
+  <defs>
+    <rect id="illustration-自己上传框架图-b" width="56" height="56" x="0" y="0" rx="4"/>
+    <filter id="illustration-自己上传框架图-a" width="137.5%" height="137.5%" x="-18.8%" y="-13.4%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <rect id="illustration-自己上传框架图-d" width="56" height="56" x="0" y="0" rx="4"/>
+    <filter id="illustration-自己上传框架图-c" width="137.5%" height="137.5%" x="-18.8%" y="-13.4%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <rect id="illustration-自己上传框架图-f" width="56" height="56" x="0" y="0" rx="4"/>
+    <filter id="illustration-自己上传框架图-e" width="137.5%" height="137.5%" x="-18.8%" y="-13.4%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <linearGradient id="illustration-自己上传框架图-i" x1="50%" x2="50%" y1="0%" y2="98.134%">
+      <stop offset="0%" stop-color="#59F8F3"/>
+      <stop offset="100%" stop-color="#2DCCEF"/>
+    </linearGradient>
+    <circle id="illustration-自己上传框架图-h" cx="16" cy="16" r="16"/>
+    <filter id="illustration-自己上传框架图-g" width="146.9%" height="146.9%" x="-29.7%" y="-14.1%" filterUnits="objectBoundingBox">
+      <feOffset dx="-2" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.192156863   0 0 0 0 0.811764706   0 0 0 0 0.941176471  0 0 0 0.206676136 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="69" cy="69" r="69" fill="#F9FAFB"/>
+    <g transform="translate(26 29)">
+      <g transform="rotate(15 -25.53 128.908)">
+        <use fill="#000" filter="url(#illustration-自己上传框架图-a)" xlink:href="#illustration-自己上传框架图-b"/>
+        <use fill="#FFF" xlink:href="#illustration-自己上传框架图-b"/>
+        <rect width="16" height="40" x="8" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="32" fill="#E9EBF1" rx="4"/>
+      </g>
+      <g transform="translate(16 11)">
+        <use fill="#000" filter="url(#illustration-自己上传框架图-c)" xlink:href="#illustration-自己上传框架图-d"/>
+        <use fill="#FFF" xlink:href="#illustration-自己上传框架图-d"/>
+        <rect width="16" height="40" x="8" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="32" fill="#E9EBF1" rx="4"/>
+      </g>
+      <g transform="rotate(-15 55.046 7.247)">
+        <use fill="#000" filter="url(#illustration-自己上传框架图-e)" xlink:href="#illustration-自己上传框架图-f"/>
+        <use fill="#FFF" xlink:href="#illustration-自己上传框架图-f"/>
+        <rect width="16" height="40" x="8" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="8" fill="#E9EBF1" rx="4"/>
+        <rect width="16" height="16" x="32" y="32" fill="#E9EBF1" rx="4"/>
+      </g>
+      <g transform="translate(55)">
+        <use fill="#000" filter="url(#illustration-自己上传框架图-g)" xlink:href="#illustration-自己上传框架图-h"/>
+        <use fill="url(#illustration-自己上传框架图-i)" xlink:href="#illustration-自己上传框架图-h"/>
+        <path fill="#FFF" d="M16.8192319,7.17033132 L21.8985764,14.4265377 C22.2152909,14.878987 22.1052561,15.5025174 21.6528068,15.8192319 C21.4847232,15.9368904 21.2845165,16 21.0793444,16 L10.9206556,16 C10.3683708,16 9.92065556,15.5522847 9.92065556,15 C9.92065556,14.7948279 9.98376517,14.5946212 10.1014236,14.4265377 L15.1807681,7.17033132 C15.4974826,6.71788202 16.121013,6.60784723 16.5734623,6.92456174 C16.6691037,6.99151066 16.752283,7.07468999 16.8192319,7.17033132 Z" opacity=".502"/>
+        <path fill="#FFF" d="M19,20 L19,23 C19,23.5522847 18.5522847,24 18,24 L14,24 C13.4477153,24 13,23.5522847 13,23 L13,20 L10.9206556,20 C10.3683708,20 9.92065556,19.5522847 9.92065556,19 C9.92065556,18.7948279 9.98376517,18.5946212 10.1014236,18.4265377 L15.1807681,11.1703313 C15.4974826,10.717882 16.121013,10.6078472 16.5734623,10.9245617 C16.6691037,10.9915107 16.752283,11.07469 16.8192319,11.1703313 L21.8985764,18.4265377 C22.2152909,18.878987 22.1052561,19.5025174 21.6528068,19.8192319 C21.4847232,19.9368904 21.2845165,20 21.0793444,20 L19,20 Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

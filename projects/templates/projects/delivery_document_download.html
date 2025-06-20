@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+{% load sass_tags %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{title}}</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'reports/images/favicon.ico' %}"/>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="{% static 'reports/styles/ie10-viewport-bug-workaround.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% sass_src  'reports/styles/past-report.scss' %}"/>
+    <link href="{% sass_src 'projects/styles/delivery_documents.scss' %}" rel="stylesheet" type="text/css" />
+    <!-- Custom styles for this template -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--[if lt IE 10]>
+    <![endif]-->
+    <!--light box -->
+</head>
+<header class="hidden-xs">
+    <div class="container">
+        <div class="past-header">
+            <a href="https://chilunyc.com">
+                <img class="pull-left header-logo" src="{% static 'reports/images/gear-logo-d@2x.png' %}" alt="">
+            </a>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container main-section">
+        <div class="content">
+            <div id="document-download-form">
+                <form method="post" action="/api/projects/delivery_document_zips/{{uid}}/download">
+                    <div class="">
+                        <span class="pull-left"><input type="text" id="cipher-input" name="cipher" placeholder="{{message}}"></span>
+                        <button type="submit" class="btn btn-primary pull-left" id="download-btn">提取文件</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="hidden-xs">
+    <p>齿轮易创：创新性IT解决方案提供商</p>
+</footer>
+<body>
+</body>
+</html>

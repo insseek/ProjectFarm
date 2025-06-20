@@ -1,0 +1,951 @@
+//antd   From的样式
+//label与content在同一行 label在左侧
+
+
+
+.label-left-form {
+
+  .ant-form-item-with-help {
+    margin-bottom: 18px;
+  }
+
+  .ant-form-item-group {
+    display: flex;
+
+    .ant-form-item {
+      .ant-form-item-control-wrapper {
+        min-width: 300px;
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .ant-form-item {
+    margin-bottom: 12px;
+    display: flex;
+
+    .ant-form-item-label {
+      width: 128px;
+    }
+
+    &.lang-item {
+      .ant-form-item-control-wrapper {
+        width: 607px;
+
+        .drag-center {
+          width: 100%;
+        }
+      }
+    }
+
+    &.no-label-form-item {
+      margin-left: 128px;
+    }
+
+    &.no-font {
+      .ant-form-item-label {
+        visibility: hidden;
+      }
+    }
+
+    &.has-follow-form-item {
+      margin-bottom: 8px !important;
+      padding-bottom: 0px !important;
+
+      .follow-form-item {
+
+      }
+
+    }
+
+    .ant-form-item-control-wrapper {
+      min-width: 360px;
+      margin-left: 0px;
+      flex: 1;
+    }
+
+
+    .ant-form-item-control-wrapper {
+      .ant-form-item-control {
+        .ant-form-explain {
+          display: none !important;
+        }
+
+      }
+    }
+
+    .ant-input-number-handler-wrap {
+      display: none;
+    }
+
+    .ant-input-number {
+      width: 100%;
+    }
+
+    .upload-file {
+      .ant-upload.ant-upload-drag {
+        background: #fff;
+        height: 76px;
+      }
+    }
+
+    .upload-file-text {
+      font-size: 14px;
+      text-align: center;
+      color: #c4c9d6;
+    }
+
+    &.show-help-form-item {
+      .ant-form-item-control-wrapper {
+        .ant-form-item-control {
+          .ant-form-explain {
+            display: block !important;
+          }
+        }
+      }
+    }
+
+  }
+
+
+  .modal-item-form-block {
+    > .modal-item-form-item {
+      .ant-form-item {
+        display: block;
+
+        .ant-form-item-label {
+          padding-bottom: 0px;
+        }
+
+        .ant-form-item-control-wrapper {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.gear-ant-form {
+  .ant-checkbox-checked {
+    .ant-checkbox-inner {
+      background-color: #ffffff;
+      border: solid 2px #2161fd !important;
+    }
+
+    .ant-checkbox-inner:after {
+      border-color: #2161fd !important;
+      transform: rotate(45deg) scale(0.9) translate(-60%, -50%);
+    }
+  }
+
+  .ant-input[disabled] {
+    background-color: #f9fafb;
+  }
+
+  .ant-form-explain {
+    display: none !important;
+  }
+}
+
+.ant-form-item.noexplain{
+  .ant-form-explain {
+    display: none !important;
+  }
+}
+
+
+
+//ant必填的红星
+.ant-form {
+  &.read-only-form {
+    .ant-form-item {
+      .ant-radio-wrapper-checked {
+        span {
+          color: rgba(0, 0, 0, 0.65);
+        }
+      }
+
+      .ant-checkbox-wrapper-disabled {
+        span {
+          color: rgba(0, 0, 0, 0.25);
+        }
+
+        &.ant-checkbox-wrapper-checked {
+          span {
+            color: rgba(0, 0, 0, 0.65);
+          }
+        }
+      }
+
+      .ant-input[disabled] {
+        color: rgba(0, 0, 0, 0.65);
+      }
+
+      .ant-radio-checked {
+
+
+        .ant-radio-inner {
+          border-color: #2161fd !important;
+        }
+
+        .ant-radio-inner:after {
+          background-color: #2161fd !important;
+        }
+      }
+
+      .ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: #ffffff;
+          border: solid 2px #2161fd !important;
+        }
+
+        .ant-checkbox-inner:after {
+          border-color: #2161fd !important;
+          transform: rotate(45deg) scale(1) translate(-50%, -50%);
+        }
+      }
+    }
+  }
+
+
+  .ant-form-item {
+    &.read-only-form-item {
+      input {
+        background-color: white;
+        color: rgba(0, 0, 0, 0.65);
+        border: 0;
+        padding-left: 0px;
+      }
+
+      textarea {
+        background-color: white;
+        color: rgba(0, 0, 0, 0.65);
+        border: 0;
+        padding-left: 0px;
+        resize: none;
+      }
+    }
+
+    .ant-form-item-label {
+      text-align: right !important;
+      padding-right: 24px !important;
+
+
+      label {
+        font-size: 14px;
+        font-weight: normal;
+        //color: #636c81;
+        color: #212736;
+
+        .label-content {
+          font-size: 14px;
+          font-weight: normal;
+          //color: #636c81;
+          color: #212736;
+          display: inline-block;
+          position: relative;
+
+          .label-remarks {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            color: #c4c9d6;
+          }
+        }
+      }
+
+      label:after {
+        display: none;
+      }
+
+      .ant-form-item-required:before {
+        //display: none;
+      }
+
+      .ant-form-item-required:after {
+        //display: inline-block;
+        //margin-right: 4px;
+        //content: '*';
+        //line-height: 1;
+        //font-size: 14px;
+        //color: #f5222d;
+      }
+    }
+
+    &.empty-label-item {
+      .ant-form-item-required:after {
+        display: inline-block;
+        margin-right: 4px;
+        content: ' ';
+        line-height: 1;
+        font-size: 14px;
+        color: white;
+      }
+
+      label:before {
+        display: none !important;
+      }
+    }
+  }
+
+
+}
+
+//ant 表单的几种结构 整行中多个form-item的样式
+.ant-form {
+  .ant-form-item {
+    &.has-follow-form-item {
+      margin-bottom: 8px;
+      padding-bottom: 0px;
+
+      .follow-form-item {
+      }
+    }
+  }
+
+  //分组的标题
+  .form-group-title {
+    margin-top: 30px;
+    height: 30px;
+    margin-bottom: 40px;
+    //最顶的标题不需要margin-top
+    &.top-group-title {
+      margin-top: 0;
+    }
+
+    .title-content {
+      display: flex;
+      align-items: center;
+      background: #f9fafb;
+      padding: 16px 24px;
+      position: absolute;
+      left: 24px;
+      right: 24px;
+
+      .title {
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #212b36;
+        padding-left: 8px;
+        border-left: 4px solid #2161fd;
+      }
+    }
+  }
+
+  //多个form-item 并在同一行中为一组 中间间隔开
+  .whole-list-form-group {
+    width: 100%;
+    display: flex;
+
+    .ant-form-item {
+      flex: 1;
+      margin-bottom: 8px;
+
+      &.label-left-form-item {
+        display: flex;
+
+        .ant-form-item-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 15px;
+
+          label {
+            margin: 0;
+            white-space: nowrap;
+          }
+        }
+
+        .ant-form-item-control-wrapper {
+          flex: 1;
+        }
+
+      }
+
+      .ant-form-item-label {
+        padding: 0;
+        text-align: left !important;
+      }
+
+      .ant-form-item-control-wrapper {
+        .ant-form-item-control {
+          .ant-form-explain {
+            display: none !important;
+          }
+        }
+      }
+
+      .ant-input-number-handler-wrap {
+        display: none;
+      }
+    }
+
+    .form-item-gap {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  //整行分割线
+  .whole-list-form-group-line {
+    width: 100%;
+    height: 1px;
+    background: #E4E6EA;
+    margin-bottom: 12px;
+  }
+
+  //label与content在同一行 label在左边
+  .label-left-form-group {
+    .ant-form-item {
+      display: flex;
+      margin-bottom: 12px;
+
+      &.has-follow-form-item {
+        margin-bottom: 8px;
+        padding-bottom: 0px;
+
+        .follow-form-item {
+        }
+      }
+
+      .ant-form-item-label {
+        width: 128px;
+      }
+
+      &.no-font {
+        .ant-form-item-label {
+          visibility: hidden;
+        }
+      }
+
+      .ant-form-item-control-wrapper {
+        min-width: 360px;
+        margin-left: 0px;
+      }
+
+      .ant-form-item-control-wrapper {
+        .ant-form-item-control {
+          .ant-form-explain {
+            display: none !important;
+          }
+
+        }
+      }
+
+      .ant-input-number-handler-wrap {
+        display: none;
+      }
+
+      .ant-input-number {
+        width: 100%;
+      }
+
+      .upload-file {
+        .ant-upload.ant-upload-drag {
+          background: #fff;
+          height: 76px;
+        }
+      }
+
+      .upload-file-text {
+        font-size: 14px;
+        text-align: center;
+        color: #c4c9d6;
+      }
+    }
+  }
+}
+
+
+//antd  Form 中 radio
+.ant-radio-inner {
+  border-width: 2px;
+}
+
+.ant-radio-wrapper {
+  padding-bottom: 6px !important;
+
+  .icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 4px;
+
+    &.icon1 {
+      background-image: url("../images/putong.svg");
+    }
+
+    &.icon2 {
+      background-image: url("../images/zhongdian.svg");
+    }
+  }
+
+  span {
+    font-weight: normal !important;
+  }
+}
+
+.ant-radio-wrapper .text {
+  color: #9199ab;
+  font-size: 14px;
+  font-weight: initial;
+}
+
+.ant-radio-wrapper:hover, .ant-radio-wrapper-checked {
+  color: #2161fd!important;
+  .text {
+    color: #454c5c;
+  }
+}
+
+.ant-radio-wrapper:hover .ant-radio .ant-radio-inner, .ant-radio:hover .ant-radio-inner, .ant-radio-focused .ant-radio-inner {
+  border-color: #2161fd !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: #2161fd !important;
+}
+
+.ant-radio-inner:after {
+  top: 2px;
+  left: 2px;
+  background: #2161fd !important;
+}
+
+
+//antd Pagination分页的样式
+.ant-pagination {
+  text-align: right;
+
+  .ant-pagination-total-text {
+    float: left;
+  }
+
+  .ant-pagination-options {
+    float: left;
+    text-align: left;
+    margin-left: 0px;
+  }
+}
+
+
+//antd modal
+.ant-modal-mask {
+  background-color: rgba(69, 76, 92, 0.5) !important;
+}
+
+.ant-modal-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
+  display: flex;
+  flex-direction: row; /*这里可以不写，flex布局默认方向横向即row*/
+  justify-content: center;
+  align-items: center;
+
+  .ant-modal {
+    margin: 0px auto;
+    top: -10px;
+
+    .ant-modal-body {
+      .ant-form {
+        .ant-form-item {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+}
+
+.ant-modal-content {
+  border-radius: 4px !important;
+  overflow: hidden;
+}
+
+
+//antd  button
+.ant-btn-primary.disabled, .ant-btn-primary[disabled], .ant-btn-primary.disabled:hover, .ant-btn-primary[disabled]:hover, .ant-btn-primary.disabled:focus, .ant-btn-primary[disabled]:focus, .ant-btn-primary.disabled:active, .ant-btn-primary[disabled]:active, .ant-btn-primary.disabled.active, .ant-btn-primary[disabled].active {
+  color: #fff !important;
+  background-color: #a6bffe !important;
+  border-color: #a6bffe !important;
+}
+
+.ant-btn-primary{
+  background-color: #2161fd !important;
+  border-color: #2161fd !important;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus{
+  background-color: #2161fd !important;
+  border-color: #2161fd !important;
+}
+
+.ant-select-dropdown-menu-item-group {
+  .ant-select-dropdown-menu-item-group-title {
+    background-color: #f1f8ff;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #212736;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+  }
+
+  .ant-select-dropdown-menu-item-group-list {
+    .ant-select-dropdown-menu-item {
+      height: 40px;
+      border-top: 1px solid #ECECEC;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal;
+      color: #212736;
+      line-height: 40px;
+      background-color: #ffffff;
+      padding: 0 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+
+//单选框矩形按钮样式
+.ant-radio-button-wrapper {
+  height: 36px;
+  border-radius: 2px;
+  border: solid 1px #ececec !important;
+  border-left: solid 1px #ececec !important;
+  background-color: #fafafa !important;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: #333333 !important;
+  margin-right: 16px !important;
+  margin-bottom: 8px !important;
+
+  &::before {
+    display: none !important;
+  }
+
+  &:hover {
+    color: #2161fd !important;
+  }
+
+  &.ant-radio-button-wrapper-checked {
+    &:first-child {
+      border-color: #2161fd;
+      border-left: solid 1px #2161fd !important;
+      box-shadow: none !important;
+    }
+
+    border: solid 1px #2161fd !important;
+    background-color: rgba(33, 97, 253, 0.08) !important;
+    border-left: solid 1px #ececec !important;
+    color: #2161fd !important;
+  }
+}
+
+//多选框的原始样式
+.ant-checkbox-group {
+  .ant-checkbox-group-item {
+    margin-bottom: 6px;
+
+    span {
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      color: rgba(0, 0, 0, 0.65);
+    }
+  }
+
+}
+
+//多选框的 button样式
+.ant-checkbox-button-group {
+
+  .ant-checkbox-wrapper {
+    height: 36px;
+    line-height: 36px !important;
+    border-radius: 2px;
+    border: solid 1px #ececec;
+    background-color: #fafafa;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    color: #333333;
+    margin-right: 8px !important;
+    margin-bottom: 8px !important;
+
+    &:hover {
+      color: #2161fd;
+
+    }
+
+    &.ant-checkbox-wrapper-checked {
+      border: solid 1px #2161fd;
+      background-color: rgba(33, 97, 253, 0.08);
+      color: #2161fd;
+    }
+
+    .ant-checkbox-inner {
+      display: none;
+    }
+
+    .item-name {
+      padding: 8px 8px;
+    }
+  }
+}
+
+
+//antd弹框
+.ant-modal {
+  width: 600px;
+
+  .ant-modal-header {
+    padding: 16px;
+  }
+
+  //比较长的modal设置最高高度
+  .ant-modal-body {
+    //padding: 20px 16px;
+    padding: 20px 18px;
+    padding-bottom: 10px;
+    max-height: 900px;
+    //min-height: 120px;
+    overflow: auto;
+    //滚动条样式
+    &::-webkit-scrollbar {
+      display: block;
+      width: 12px;
+      background: #F9FAFB;
+      box-shadow: -1px 0px 0px 0px rgba(228, 230, 234, 1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #C4C9D6;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 1em;
+      background-color: #F9FAFB;
+    }
+  }
+
+  //body提示信息的样式
+  .ant-modal-body {
+    //不设置背景
+    .model-body-normal-message {
+      margin-bottom: 16px;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 14px;
+    }
+
+    //醒目粉背景
+    .model-body-message {
+      background: #FFE9EA;
+      //height: 36px;
+      //line-height: 36px;
+      padding: 8px 8px;
+      border-radius: 2px;
+      font-size: 14px;
+      color: #242A39;
+      margin-bottom: 16px;
+
+      .text-bold {
+        font-weight: 700;
+      }
+
+      .people-list {
+        display: inline-block;
+        margin: 0 8px;
+
+        .people-name {
+          margin-left: 4px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .ant-modal-footer {
+    padding: 10px 16px;
+    border-top: none;
+  }
+}
+
+@media (max-width: 1920px) {
+  //antd弹框
+  .ant-modal {
+    width: 600px;
+
+    .ant-modal-header {
+      padding: 16px;
+    }
+
+    //比较长的modal设置最高高度
+    .ant-modal-body {
+      //padding: 20px 16px;
+      padding: 20px 18px;
+      padding-bottom: 10px;
+      max-height: 650px;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  //antd弹框
+  .ant-modal {
+    width: 600px;
+
+    .ant-modal-header {
+      padding: 16px;
+    }
+
+    //比较长的modal设置最高高度
+    .ant-modal-body {
+      //padding: 20px 16px;
+      padding: 20px 18px;
+      padding-bottom: 10px;
+      max-height: 500px;
+    }
+  }
+}
+
+
+//antd弹框中form的分组标题 以及//label与content在同一行的样式
+.ant-modal {
+  width: 600px;
+
+  .ant-form {
+    position: relative;
+    //分组的标题
+    .form-group-title {
+      margin-top: 12px;
+      height: 30px;
+      margin-bottom: 12px;
+      //最顶的标题不需要margin-top
+      &.top-group-title {
+        margin-top: 0;
+      }
+
+      .title-content {
+        display: flex;
+        align-items: center;
+        background: #f9fafb;
+        padding: 8px 0px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+
+        .title {
+          padding-left: 8px;
+          border-left: 4px solid #2161fd;
+          height: 14px;
+          font-size: 14px;
+          font-weight: 600;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1;
+          letter-spacing: normal;
+          color: #333333;
+        }
+      }
+    }
+
+
+    //label与content在同一行 label在左边的组
+    .label-left-form-group {
+      padding: 0 8px;
+
+      .ant-form-item-label {
+        width: 128px;
+      }
+
+      .ant-form-item-control-wrapper {
+        min-width: 360px;
+        max-width: 400px;
+      }
+
+      .no-label-form-item {
+        margin-left: 128px;
+      }
+    }
+  }
+
+  //label与content在同一行 label在左边
+  .label-left-form {
+
+  }
+
+
+}
+
+
+.ant-btn-danger {
+  color: #fff !important;
+  background-color: #ff4d4f !important;
+  border-color: #ff4d4f !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12) !important;
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045) !important;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045) !important;
+}
+
+.ant-btn-danger:hover, .ant-btn-danger:focus {
+  color: #fff !important;
+  background-color: #ff7875 !important;
+  border-color: #ff7875 !important;
+}
+
+.no-explain-ant-form-item {
+  .ant-form-explain {
+    display: none !important;
+  }
+}
+
+
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-thead > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td{
+  background: #f5f5f5 !important;
+}
+
+.ant-alert{
+  border-radius: 4px !important;
+}
+.ant-alert-info{
+  background-color: #E8EFFE !important;
+  border: 1px solid #84A8FD !important;
+}

@@ -1,0 +1,17 @@
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目详情" transform="translate(-348.000000, -78.000000)" fill-rule="nonzero">
+            <g id="Content" transform="translate(186.000000, 70.000000)">
+                <g id="title">
+                    <g id="Other/Alert/Error" transform="translate(152.000000, 0.000000)">
+                        <g id="Other/Alert/Icon-error" transform="translate(8.000000, 6.000000)">
+                            <rect id="矩形" x="0" y="0" width="20" height="20"></rect>
+                            <polygon id="多边形" fill="#F5121D" points="10 2 18 10 10 18 2 10"></polygon>
+                            <path d="M9,6 L11,6 L11,12 L9,12 L9,6 Z M9,13 L11,13 L11,15 L9,15 L9,13 Z" id="合并形状" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

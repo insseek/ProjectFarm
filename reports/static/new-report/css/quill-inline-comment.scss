@@ -1,0 +1,335 @@
+.pro-comments-point {
+  font-family: 'Helvetica Neue For Number', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue',
+  'Helvetica', 'Arial', 'sans-serif';
+  position: relative;
+
+  .pro-comments-box-left {
+    left: -305px;
+    top: 0;
+  }
+
+  .pro-comments-box-right {
+    position: absolute;
+    left: 57px;
+    top: 0;
+  }
+}
+
+.pro-comments-point {
+  cursor: pointer;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: url(../img/pro-comment-point@2x.png) no-repeat center center;
+  background-size: 36px 36px;
+  font-size: 14px;
+  color: #FFFFFF;
+
+  .comment-point-num {
+    display: inline-block;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+  }
+}
+
+.pro-comments-box {
+  cursor: auto;
+  position: relative;
+  z-index: 3500;
+  .arrow {
+    position: absolute;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ECECEC;
+    background: #fff;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -moz-transform: rotate(45deg); /* Firefox */
+    -webkit-transform: rotate(45deg); /* Safari 和 Chrome */
+    -o-transform: rotate(45deg); /* Opera */
+  }
+  .arrow-left {
+    left: -8px;
+    top: 25px;
+    border-right: 0;
+    border-top: 0;
+  }
+  .arrow-right {
+    right: -8px;
+    top: 25px;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .item-bg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.pro-comments-box {
+  position: absolute;
+  box-shadow: 0 2px 6px 0 rgba(13, 18, 29, 0.16);
+  width: 290px;
+  max-height: 435px;
+
+  .media {
+    margin-top: 15px
+  }
+
+  .media:first-child {
+    margin-top: 0
+  }
+
+  .media,
+  .media-body {
+    overflow: hidden;
+    zoom: 1
+  }
+
+  .media-body {
+    width: 10000px
+  }
+
+  .media-object {
+    display: block
+  }
+
+  .media-object.img-thumbnail {
+    max-width: none
+  }
+
+  .media-right,
+  .media > .pull-right {
+    padding-left: 10px
+  }
+
+  .media-left {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  .media > .pull-left {
+    padding-right: 10px
+  }
+
+  .media-body,
+  .media-left,
+  .media-right {
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 5px;
+  }
+
+  .media-middle {
+    vertical-align: middle
+  }
+
+  .media-bottom {
+    vertical-align: bottom
+  }
+
+  .media-heading {
+    margin-top: 0;
+    margin-bottom: 5px
+  }
+
+  .media-list {
+    padding-left: 0;
+    list-style: none
+  }
+
+  .comments-list {
+    background: #FFFFFF;
+    overflow: auto;
+
+    .media {
+      padding: 16px 0;
+      margin-top: 0;
+      background-size: 6px 1px;
+    }
+
+    .media .comments-img {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .media-body {
+      .comment-header {
+        line-height: 16px;
+        //margin-bottom: 0;
+        .comment-name {
+          color: #333333;
+          font-size: 12px;
+          font-weight: 500;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.33;
+          letter-spacing: normal;
+        }
+
+        .comment-time {
+          color: #989898;
+          font-size: 12px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+        }
+
+        .pro-comment-delete {
+          padding-top: 2px;
+          width: 24px;
+          height: 16px;
+          color: rgba(33, 97, 253, 1);
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .comments-list {
+    background: #FFFFFF;
+    max-height: 210px;
+    overflow: auto;
+
+    :last-child {
+      margin-bottom: 20px;
+    }
+
+    .comment-item {
+      margin: 20px 16px 0 16px;
+      padding: 0;
+    }
+
+    .comment-msg {
+      width: auto;
+      word-break: normal;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: #333333;
+      font-size: 14px;
+
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: normal;
+    }
+
+    .comments-time {
+      width: auto;
+      color: #989898;
+      font-size: 12px;
+    }
+
+  }
+
+  .comment-footer {
+    padding: 16px;
+    min-height: 110px;
+    background: #FFFFFF;
+    .comment-input {
+      width: 260px;
+      height: 50px;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      background-color: #ffffff;
+      border: solid 1px #ececec;
+      resize: none;
+      outline: none;
+      color:black !important;
+    }
+  }
+
+  .btn-link {
+    font-weight: 400;
+    color: #337ab7;
+    border-radius: 0
+  }
+
+  .gear-font-light {
+    color: #000;
+  }
+
+  .color-blue {
+    color: #49A3FF !important;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .pull-right {
+    float: right !important;
+  }
+
+  .pull-left {
+    float: left !important;
+  }
+
+  .btn-type {
+    width: 60px;
+    height: 22px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    margin: 4px 4px 0 0;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .disable-btn {
+    opacity: 0.5;
+    cursor: default !important;
+  }
+
+  .btn-blue {
+    background: #2161FD;
+  }
+
+  .btn-gray {
+    color: #333;
+    background: #FAFAFA;
+  }
+
+  a {
+    color: #1890ff;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+  }
+}
+
+.gear-pro-comments-point-number {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 3000;
+  width: 16px;
+  height: 16px;
+  background: url(../img/pro-comment-num-point@2x.png) no-repeat;
+  background-size: 16px 16px;
+  font-size: 12px;
+  color: #FFFFFF;
+  line-height: 16px;
+  text-align: center;
+  margin-left: 5px;
+}

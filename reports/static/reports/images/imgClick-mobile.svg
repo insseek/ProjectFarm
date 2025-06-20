@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56" height="56" viewBox="0 0 56 56">
+  <defs>
+    <rect id="手机-打开-b" width="48" height="48" x="0" y="0" rx="24"/>
+    <filter id="手机-打开-a" width="127.1%" height="127.1%" x="-13.5%" y="-11.5%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.129411765   0 0 0 0 0.152941176   0 0 0 0 0.211764706  0 0 0 0.159309441 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(4 3)">
+    <use fill="#000" filter="url(#手机-打开-a)" xlink:href="#手机-打开-b"/>
+    <use fill="#212736" xlink:href="#手机-打开-b"/>
+    <path fill="#FFF" d="M15.8786797,27.8786797 L20.2876894,23.4696699 L24.5303301,27.7123106 L20.1213203,32.1213203 L24,36 L12,36 L12,24 L15.8786797,27.8786797 Z M32.1213203,20.1213203 L27.7123106,24.5303301 L23.4696699,20.2876894 L27.8786797,15.8786797 L24,12 L36,12 L36,24 L32.1213203,20.1213203 Z"/>
+  </g>
+</svg>

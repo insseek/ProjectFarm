@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>分组 2 copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="甘特图细化（11/14）" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目甘特图" transform="translate(-1190.000000, -83.000000)" fill-rule="nonzero">
+            <g id="icon" transform="translate(1050.000000, 83.000000)">
+                <g id="分组-2-copy" transform="translate(140.000000, 0.000000)">
+                    <rect id="矩形-copy-3" fill="#F2F2F2" x="0" y="0" width="30" height="30" rx="2"></rect>
+                    <path d="M21.2423195,18.1715324 L23.0703325,16.3435194 L24.4845461,17.7577329 L22.3632257,19.8790533 L21.6566734,20.5856056 L20.2426407,22 L18.8276918,20.5861601 L18.1213203,19.8786797 L16,17.7573593 L17.4142136,16.3431458 L19.2423195,18.1712517 L19.2423195,8 L21.2423195,8 L21.2423195,18.1715324 Z" id="合并形状" fill="#333333"></path>
+                    <path d="M7,9 L15,9 L15,11 L7,11 L7,9 Z M9,14 L15,14 L15,16 L9,16 L9,14 Z M10,19 L15,19 L15,21 L10,21 L10,19 Z" id="合并形状" fill="#333333" transform="translate(11.000000, 15.000000) scale(-1, -1) translate(-11.000000, -15.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

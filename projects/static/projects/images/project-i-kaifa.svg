@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icon/Icon-00/63</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1,2 L17,2 L17,16 L1,16 L1,2 Z M3,4 L3,14 L15,14 L15,4 L3,4 Z M6,5 L8,5 L6,9 L8,13 L6,13 L4,9 L6,5 Z M10,5 L12,5 L14,9 L12,13 L10,13 L12,9 L10,5 Z" id="path-1"></path>
+    </defs>
+    <g id="Icon/Icon-00/63" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#333333" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Colors/#212736" mask="url(#mask-2)" fill="#212736">
+            <rect id="Colors/#454C5C" x="0" y="0" width="18" height="18"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>Icon/48</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z" id="path-1"></path>
+    </defs>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目工程师需求修改" transform="translate(-473.000000, -685.000000)">
+            <g id="编组-11" transform="translate(402.000000, 683.000000)">
+                <g id="Icon/48" transform="translate(72.000000, 3.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" stroke="#F7414A" stroke-width="2" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <polygon id="Path" fill="#F7414A" fill-rule="nonzero" mask="url(#mask-2)" points="6.58578644 8 4.46446609 5.87867966 5.87867966 4.46446609 8 6.58578644 10.1213203 4.46446609 11.5355339 5.87867966 9.41421356 8 11.5355339 10.1213203 10.1213203 11.5355339 8 9.41421356 5.87867966 11.5355339 4.46446609 10.1213203"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

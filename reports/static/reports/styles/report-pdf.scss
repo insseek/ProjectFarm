@@ -1,0 +1,283 @@
+/*通用*/
+@page {
+  size: A4;
+}
+
+body {
+  font-family: 'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei', 'PingFang SC', 'Microsoft YaHei', 'San Francisco', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', sans-serif;
+  color: #131537 !important;
+}
+
+.main-content {
+  padding-left: 0;
+  padding-right: 0;
+
+  .content-sections {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.print-header,
+.print-list,
+.print-next,
+.print-server,
+.print-catalogue,
+.just-for-print,
+.print-show {
+  display: block;
+}
+
+.report-header {
+  display: none;
+}
+
+.print-header {
+  height: 100%;
+  width: 100%;
+
+  .print-header-top {
+    padding: 50pt;
+    height: 650pt;
+    background: #DEEFFC !important;
+
+    h1 {
+      text-align: left;
+      position: static;
+      transform: translateX(0);
+      font-size: 30pt;
+      line-height: 30pt;
+      margin-top: 250pt;
+    }
+
+    .print-version-info {
+      margin-top: 10pt;
+      font-size: 12pt;
+      text-align: left;
+    }
+  }
+
+  .print-header-middle {
+    height: 50pt;
+    background: #d1e0ec !important;
+  }
+
+  .print-header-bottom {
+    height: 50pt;
+    margin-top: 80pt;
+    text-align: right;
+    margin-right: 50pt;
+    img {
+      width: 150pt;
+      margin-right: 20pt;
+    }
+  }
+
+}
+
+/*分页*/
+.print-list,
+.content-section,
+.just-for-print {
+  page-break-before: always;
+}
+
+
+/*页码*/
+@page {
+  font-family: 'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei';
+  @bottom-right {
+    content: "第" counter(page) "页 (共" counter(pages) "页) "  ;
+    font-size: 10.5pt;
+    color: #aaa;
+  }
+}
+
+/*首页*/
+@page :first {
+  margin: 0;
+  margin-top: -100pt;
+  @bottom-right {
+    content: "";
+  }
+  @top-left {
+    content: '';
+  }
+}
+
+.report-header {
+  text-align: left;
+  width: 100%;
+}
+
+.service-items,
+.next-container {
+  display: none;
+}
+
+/*目录*/
+.print-list {
+  margin-left: -5pt;
+
+  li {
+    list-style: none;
+    font-size: 12pt;
+    line-height: 30pt;
+
+    a::after {
+      content: leader('.') target-counter(attr(href url), page);
+    }
+  }
+
+  .catalogue-header {
+    font-size: 14pt;
+    font-weight: 500;
+  }
+}
+
+/*内容*/
+section {
+  position: relative;
+  margin-top: 0;
+
+  h2 {
+    font-size: 14pt;
+    margin-bottom: 8pt;
+    padding-left: 10pt;
+    color: #1C8CFF !important;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      bottom: -8pt;
+      left: -4pt;
+      content: '';
+      display: block;
+      width: 17.5cm;
+      height: 1px;
+      border-top: 1px solid #e6e6e6;
+    }
+
+    &:before {
+      position: absolute;
+      top: 3pt;
+      left: 0;
+      content: '';
+      display: block;
+      width: 5pt;
+      height: 15pt;
+      //border: 1px solid red;
+      background: #1C8CFF !important;
+    }
+  }
+
+  .report-item-title {
+    font-size: 14pt;
+  }
+
+  ul {
+    // margin-left: 10pt;
+    li {
+      font-size: 12pt;
+    }
+  }
+
+  .doc-record {
+    td, th {
+      text-align: center;
+    }
+  }
+}
+
+.catalogue-header {
+  position: relative;
+  color: #1C8CFF !important;
+  //padding-left: 12pt;
+  //left: -18pt;
+  left: -15pt;
+
+  &:before {
+    position: absolute;
+    //top: 6pt;
+    top: 8pt;
+    left: -10pt;
+    content: '';
+    display: block;
+    width: 5pt;
+    height: 15pt;
+    //border: 1px solid red;
+    background: #1C8CFF !important;
+  }
+
+  &:after {
+    position: absolute;
+    bottom: -8pt;
+    top: 0;
+    left: -4pt;
+    content: '';
+    display: block;
+    width: 17.5cm;
+    height: 1px;
+    margin-bottom: 2pt;
+    border-top: 1px solid #e6e6e6;
+  }
+}
+
+#version_content-section {
+  padding-right: 50pt;
+  &:before {
+    width: 100pt;
+    height: 100pt;
+  }
+}
+
+#time-price-section,#service-scope-section,#report-notice{
+  padding-right: 50pt;
+}
+
+.break-down {
+  page-break-before: always;
+  page-break-after: always;
+}
+
+.report-time-container {
+  .report-time-msg {
+    padding: 25px 25px;
+    border: 1px solid #EAEAEA;
+
+    > div {
+      position: relative;
+
+      img {
+        width: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+    }
+  }
+}
+
+.main-sections {
+  .print-image {
+    display: inline-block;
+  }
+
+  .print-hidden-image {
+    display: none;
+  }
+
+  .mindmap-box {
+    max-height: 888px;
+  }
+
+  img {
+    //prince-image-resolution: auto, normal;
+    max-height: 886px;
+    width: auto;
+  }
+  .content-image {
+    prince-image-magic: recompress-jpeg(80%) convert-to-jpeg(80%) snap-to-integer-coords;
+  }
+}

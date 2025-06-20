@@ -1,0 +1,219 @@
+//项目详情中评论备注
+.comments-container {
+  color: #333;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-block-end: 0;
+  }
+
+  .comments-list {
+    //flex: 1;
+    padding: 12px;
+    padding-bottom: 0;
+    overflow-y: auto;
+    /*&::-webkit-scrollbar {
+        display: none;
+    }*/
+    .comment-item {
+      margin-bottom: 18px;
+
+      &:hover {
+        .text-time {
+          display: none;
+        }
+
+        .user-btn {
+          display: initial;
+        }
+      }
+
+      .text-name {
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #212736;
+        margin-right: 4px;
+      }
+
+      .text-time {
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #a8a8a8;
+        margin-right: 0px;
+      }
+
+      .user-btn {
+        display: none;
+        font-size: 12px;
+        color: #a6bffe;
+        margin-right: 4px;
+        cursor: pointer;
+
+        &:hover {
+          color: #2161fd;
+        }
+      }
+
+      .comments-buttons {
+        display: none;
+
+        .comments-button {
+          display: inline-block;
+          margin-right: 8px;
+          cursor: pointer;
+        }
+
+        .text-blue {
+          font-size: 12px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.33;
+          letter-spacing: normal;
+          color: #5b8bff !important;
+        }
+
+        .text-red {
+          font-size: 12px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.33;
+          letter-spacing: normal;
+          color: #ff6069 !important;;
+        }
+      }
+
+      .comments-msg {
+        margin-top: 8px;
+        word-break: break-word;
+        white-space: pre-line;
+        padding-left: 35px;
+      }
+      .children-box{
+        margin-top: 18px;
+        padding-left: 35px;
+        .comment-item:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+    .point-comment-list{
+      cursor: pointer;
+      margin-bottom: 18px;
+      padding: 12px;
+      background: #F7F9FC;
+      border-radius: 4px;
+    }
+
+    .media {
+      margin-top: 0;
+      background: none;
+    }
+
+    .media:last-child {
+      background: none;
+    }
+  }
+
+  .edit-comments-area {
+    flex: 1;
+    //border-top: 1px solid #EFEFF1;
+    padding: 16px;
+    height: auto;
+    position: relative;
+    //min-height: 133px;
+    padding-bottom: 0;
+
+    &.small-size {
+      display: flex;
+      padding: 12px;
+      min-height: auto;
+      border: 0;
+
+      .gear-at-div {
+        flex: auto;
+
+        .gear-at-textarea {
+          height: 32px;
+        }
+      }
+
+      .edit-comments-area-bottom {
+        margin-top: 0;
+        .comment-sub-btn {
+          height: 29px;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    .edit-comments-area-bottom {
+      text-align: right;
+      margin-left: 8px;
+      margin-top: 12px;
+    }
+
+    .comment-set-btn {
+      width: 44px;
+      min-width: 44px;
+      height: 24px;
+      border-radius: 2px;
+      //position: absolute;
+      //right: 10px;
+      //bottom: 10px;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: normal;
+      margin-right: 12px;
+    }
+
+    .comment-sub-btn {
+      width: 44px;
+      min-width: 44px;
+      height: 24px;
+      border-radius: 2px;
+      //position: absolute;
+      //right: 10px;
+      //bottom: 10px;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: normal;
+      color: #ffffff;
+    }
+  }
+
+  .no-reviews {
+    flex: 1;
+    padding-top: 154px;
+    text-align: center;
+
+    > img {
+      width: 80px;
+      height: 80px;
+    }
+
+    > div {
+      color: #9199AB;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  }
+}

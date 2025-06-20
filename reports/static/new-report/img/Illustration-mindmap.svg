@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="138" viewBox="0 0 138 138">
+  <defs>
+    <linearGradient id="illustration-思维导图-c" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#5FA8FF"/>
+      <stop offset="100%" stop-color="#2161FD"/>
+    </linearGradient>
+    <rect id="illustration-思维导图-b" width="40" height="20" x="0" y="30" rx="2"/>
+    <filter id="illustration-思维导图-a" width="145%" height="190%" x="-22.5%" y="-45%" filterUnits="objectBoundingBox">
+      <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.129411765   0 0 0 0 0.380392157   0 0 0 0 0.992156863  0 0 0 0.293515079 0"/>
+    </filter>
+    <rect id="illustration-思维导图-e" width="32" height="16" x="62" y="4" rx="2"/>
+    <filter id="illustration-思维导图-d" width="165.6%" height="231.2%" x="-32.8%" y="-46.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <rect id="illustration-思维导图-g" width="32" height="16" x="62" y="60" rx="2"/>
+    <filter id="illustration-思维导图-f" width="165.6%" height="231.2%" x="-32.8%" y="-46.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="69" cy="69" r="69" fill="#F9FAFB"/>
+    <g transform="translate(20 29)">
+      <path stroke="#E9EBF1" stroke-width="4" d="M31,40 L43.390625,40 C47.808903,40 51.390625,36.418278 51.390625,32 L51.390625,20 C51.390625,15.581722 54.972347,12 59.390625,12 L69.0181901,12"/>
+      <path stroke="#E9EBF1" stroke-width="4" d="M31,68 L43.390625,68 C47.808903,68 51.390625,64.418278 51.390625,60 L51.390625,48 C51.390625,43.581722 54.972347,40 59.390625,40 L69.0181901,40" transform="matrix(1 0 0 -1 0 108)"/>
+      <use fill="#000" filter="url(#illustration-思维导图-a)" xlink:href="#illustration-思维导图-b"/>
+      <use fill="url(#illustration-思维导图-c)" xlink:href="#illustration-思维导图-b"/>
+      <use fill="#000" filter="url(#illustration-思维导图-d)" xlink:href="#illustration-思维导图-e"/>
+      <use fill="#FFF" xlink:href="#illustration-思维导图-e"/>
+      <use fill="#000" filter="url(#illustration-思维导图-f)" xlink:href="#illustration-思维导图-g"/>
+      <use fill="#FFF" xlink:href="#illustration-思维导图-g"/>
+    </g>
+  </g>
+</svg>

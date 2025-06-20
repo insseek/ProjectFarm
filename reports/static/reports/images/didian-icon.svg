@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>didian</title>
+    <desc>Created with Sketch.</desc>
+    <g id="线索报告" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="克隆报告复制-2" transform="translate(-695.000000, -437.000000)" fill-rule="nonzero" stroke="#454C5C" stroke-width="1.77777778">
+            <g id="didian" transform="translate(696.000000, 438.000000)">
+                <path d="M5.99687109,15.2406417 C5.00688361,14.2742552 0,9.43468297 0,6.2987013 C0,2.82467533 3.14080099,0 7,0 C10.8613892,0 14,2.82467532 14,6.2987013 C14,9.42704355 9.00625782,14.2494271 8.00531915,15.2387319 C6.98685858,16.2089381 6.98685858,16.2089381 5.99687109,15.2406417 Z" id="路径"></path>
+                <path d="M7,10 C5.34588385,10 4,8.65491651 4,7 C4,5.34693878 5.34588385,4 7,4 C8.65411615,4 10,5.34508349 10,7 C10,8.65491651 8.65411615,10 7,10 Z" id="路径"></path>
+            </g>
+        </g>
+    </g>
+</svg>

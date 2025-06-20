@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+{% load sass_tags %}
+{% load compress %}
+{% load mytags %}
+{% settings 'JS_BUILD_OUTPUT_PATH' as js_build_output_path %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>编辑报告 - {{report.title}}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'reports/images/favicon.ico' %}"/>
+
+    <!-- Quill -->
+    <link href="{% static 'new-report/js/vendor/quill-2.0.0-dev/quill.snow.min.css' %}?v=2.007" rel="stylesheet">
+    <script src="{% static 'new-report/js/vendor/quill-2.0.0-dev/quill.min.js' %}?v=2.007" type="text/javascript"></script>
+
+    <link href="{% static 'new-report/js/vendor/quill-2.0.0-dev/quill-better-table/quill-better-table.css' %}?v=2.007" rel="stylesheet">
+    <script src="{% static 'new-report/js/vendor/quill-2.0.0-dev/quill-better-table/quill-better-table.js' %}?v=2.007" type="text/javascript"></script>
+
+
+    <!--    评论组件的样式-->
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'new-report/css/quill-inline-comment.scss' %}?v=2.007"/>
+    <!--    选择图片组件的样式-->
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'new-report/css/quill-select-wireframes.scss' %}?v=2.007"/>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css' %}">
+    <!--右键菜单-->
+    <link href="{% static 'new-report/js/vendor/contextMenu/jquery.contextMenu.min.css' %}?v=2.007" rel="stylesheet">
+    <!--antd-->
+    <link rel="stylesheet" href="{% static 'new-report/js/vendor/antd/antd.min.css' %}?v=2.007">
+
+    <!--d3 map-->
+    <link rel="stylesheet" href="{% static 'new-report/js/mindmap/css/view.mindmap.css' %}?v=2.007">
+    <script src="{% static 'new-report/js/vendor/jquery-3.3.1.min.js' %}?v=2.007"></script>
+    <script src="{% static 'farm-package/cdn.bootcss.com/moment.js/2.14.1/moment.min.js' %}?v=2.007"></script>
+    <script src="{% static 'farm-package/cdn.bootcss.com/moment.js/2.14.1/locale/zh-cn.js' %}?v=2.007"></script>
+    <script type="text/javascript" src="https://cdn.plugins.chilunyc.com/gear-pusher/gear-pusher.min.js"></script>
+
+
+    <link href="{% sass_src 'new-report/js/jquery.atwho.min.css' %}?v=2.007" rel="stylesheet" type="text/css"/>
+    <script src="{% static 'new-report/js/jquery.caret.min.js' %}?v=2.007"></script>
+    <script src="{% static 'new-report/js/jquery.atwho.js' %}?v=2.007"></script>
+
+    {% compress css %}
+    <link href="{% sass_src 'new-report/css/antd-reset.scss' %}?v=2.007" rel="stylesheet" type="text/css"/>
+    <!--    覆盖quill编辑器自带样式-->
+    <link href="{% sass_src 'new-report/css/custom-quill.scss' %}?v=2.007" rel="stylesheet" type="text/css"/>
+    <!--编辑报告样式-->
+    <link href="{% sass_src 'new-report/css/new-report.scss' %}?v=2.007" rel="stylesheet" type="text/css"/>
+    <link href="{% sass_src 'new-report/css/report-edittor-reset.scss' %}?v=2.007" rel="stylesheet" type="text/css"/>
+    {% endcompress %}
+</head>
+
+<body>
+<style>
+    /*Webkit,Opera9.5+,Ie9+*/
+    ::selection {
+        background: hsla(211, 100%, 91%, 1);
+        color: initial;
+    }
+
+    /*Mozilla Firefox*/
+    ::-moz-selection {
+        background: hsla(211, 100%, 91%, 1);
+        color: initial;
+    }
+</style>
+
+<div id="NewReports"></div>
+</body>
+<script>
+    if (location.protocol == 'https:') {
+        GearPusher.initialize({
+            serverDomain: "wss://" + window.location.host
+        })
+    } else {
+        GearPusher.initialize({
+            serverDomain: "ws://" + window.location.host
+        })
+    }
+</script>
+<!--通用方法-->
+{% compress js %}
+<script src="{% static 'farm-package/common_utils.js' %}?v=19.12.24"></script>
+{% endcompress %}
+<script>
+    var PageData = {
+        reportData: JSON.parse(`{{report_data_str|safe}}`),
+        page_view_uuid: getUUID(10, 62)
+    };
+    var quill = null;
+</script>
+{% compress js %}
+<script src="{% static 'farm-package/logged_user_perm.js' %}"></script>
+<script src="{% static 'new-report/js/utils.js' %}" type="text/javascript"></script>
+<script src="{% static 'new-report/js/JqMention.js' %}"></script>
+{% endcompress %}
+
+<!--这是编辑器内评论的的组件 开发中。  编辑器外对每个区域的评论、以及全局评论可能需要另外开发-->
+<script src="{% static 'new-report/js/quill-custom-modules/quill-inline-comment.js' %}?v=2.007"
+        type="text/javascript"></script>
+
+<script src="{% static 'new-report/js/quill-custom-modules/quill-gear-table.js' %}?v=2.007"
+        type="text/javascript"></script>
+<script src="{% static 'new-report/js/quill-custom-modules/quill-gear-single-image-formats.js' %}?v=2.007"
+        type="text/javascript"></script>
+<script src="{% static 'new-report/js/quill-custom-modules/quill-gear-multiple-image-formats.js' %}?v=2.007"
+        type="text/javascript"></script>
+
+<!--普通用于展示图片的组件-->
+<script src="{% static 'new-report/js/quill-custom-modules/quill-gear-image-formats.js' %}?v=2.007"
+        type="text/javascript"></script>
+
+
+<script src="{% static 'new-report/js/quill-custom-modules/quill-gear-image-new.js' %}?v=2.007"
+        type="text/javascript"></script>
+
+
+
+<!--多人鼠标的组件 开发中-->
+<script src="{% static 'new-report/js/quill-custom-modules/quill-cursors.js' %}?v=2.007"
+        type="text/javascript"></script>
+<!--<script src="{% static 'new-report/js/vendor/emitter.min.js' %}?v=2.007" type="text/javascript"></script>-->
+<!--协作编辑-->
+<!--<script src="{% static 'new-report/js/realtime-collaboration.js' %}?v=2.007" type="text/javascript"></script>-->
+
+<!--右键菜单-->
+<script src="{% static 'new-report/js/vendor/contextMenu/jquery.contextMenu.min.js' %}?v=2.007"></script>
+<script src="{% static 'new-report/js/vendor/contextMenu/jquery.ui.position.js' %}?v=2.007"></script>
+
+<script src="{% static 'new-report/js/vendor/Sortable.min.js' %}?v=2.007"></script>
+
+<!--d3生成svg-->
+<script src="{% static 'new-report/js/mindmap/js/d3.v3.min.js' %}?v=2.007" type="text/javascript"></script>
+<script src="{% static 'new-report/js/mindmap/js/d3-flextree.js' %}?v=2.007" type="text/javascript"></script>
+<script src="{% static 'new-report/js/mindmap/js/view.mindmap.js' %}?v=2.007" type="text/javascript"></script>
+
+<!--基于webpack打包后的react的公共代码-->
+{% compress js %}
+<script src="{{js_build_output_path}}/commons.chunk.js"></script>
+<script src="{{js_build_output_path}}/antd.chunk.js"></script>
+<script src="{{js_build_output_path}}/moment.chunk.js"></script>
+{% endcompress %}
+
+{% if report.report_type == 'lead' %}
+{% compress js %}
+<script src="{{js_build_output_path}}/new-report-lead.js"></script>
+{% endcompress %}
+{% endif %}
+
+{% if report.report_type == 'proposal' %}
+{% compress js %}
+<script src="{{js_build_output_path}}/new-report.js"></script>
+{% endcompress %}
+{% endif %}
+
+
+<script src="{% static 'new-report/js/page-view-tracker.js' %}?v=2.007"></script>
+
+<!--这是页面多人浏览编辑用户进入离开的统计-->
+<script>
+    if (typeof (PageViewTracker) != "undefined") {
+        PageViewTracker.initialize({
+            idleTimeoutInSeconds: 60,
+            pageData: {
+                page_path: window.location.pathname,
+                report_uid: PageData.reportData.uid,
+                username: loggedUser.username
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="58px" viewBox="0 0 64 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icon/Icon-Default Page/Icon-没有评论和备注</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="需求评论" transform="translate(-188.000000, -430.000000)" fill-rule="nonzero">
+            <g id="评论备注1" transform="translate(70.000000, 59.000000)">
+                <g id="没有评论" transform="translate(101.000000, 360.000000)">
+                    <g id="Icon/Icon-Default-Page/Icon-没有评论和备注" transform="translate(9.000000, 0.000000)">
+                        <path d="M29.395734,67 L13,67 L13,50.604266 C11.7089933,47.3197567 11,43.7426755 11,40 C11,23.9837423 23.9837423,11 40,11 C56.0162577,11 69,23.9837423 69,40 C69,56.0162577 56.0162577,69 40,69 C36.2573245,69 32.6802433,68.2910067 29.3957377,67.0000015 Z M24,36 L24,44 L32,44 L32,36 L24,36 Z M36,36 L36,44 L44,44 L44,36 L36,36 Z M48,36 L48,44 L56,44 L56,36 L48,36 Z" id="合并形状" fill="#2161FD"></path>
+                        <rect id="Rectangle" fill-opacity="0.800866168" fill="#00FF9B" transform="translate(40.000000, 40.000000) rotate(-330.000000) translate(-40.000000, -40.000000) " x="6" y="36" width="68" height="8"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

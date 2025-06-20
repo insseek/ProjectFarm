@@ -1,0 +1,215 @@
+// 克隆报告modal
+
+.modal-content-header {
+  padding: 0 20px;
+  height: 60px;
+  line-height: 60px;
+  color: #333;
+  font-size: 16px;
+  border-bottom: 1px solid #D1D1D1;
+
+  span:nth-child(1) {
+    font-weight: 500;
+    display: inline-block;
+    max-width: 550px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .close-btn {
+    font-size: 25px;
+    cursor: pointer;
+    color: #C2C7CC;
+  }
+}
+
+.report-clone-modal {
+  .modal-content {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .modal-box {
+    width: 650px;
+    margin: 100px auto;
+    max-width: 90%;
+  }
+
+  .modal-content-body {
+    background: transparent;
+  }
+
+  .modal-content-header {
+    background: #fff;
+
+    span:nth-child(1) {
+      em {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #989898;
+      }
+    }
+  }
+
+  .quick-add-task-container {
+    padding: 20px;
+    height: 80px;
+    background: #fff;
+    font-size: 0;
+    color: #333;
+
+    .form-content {
+      text-align: center;
+
+      > div {
+        display: inline-block;
+        border: 1px solid #ECECEC;
+        border-right: 0;
+        position: relative;
+      }
+
+      > div:last-child {
+        border-right: 1px solid #ECECEC;
+      }
+
+      .reference-project {
+        width: 80%;
+      }
+
+      input {
+        width: 100%;
+        font-size: 14px;
+        height: 32px;
+        line-height: 32px;
+        padding: 4px 9px;
+        border: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        outline: none;
+
+        &:focus {
+          border: 1px solid #2161FD;
+        }
+      }
+
+      .suggest-container {
+        position: absolute;
+        bottom: -400px;
+        left: -1px;
+        top: 32px;
+        width: 100%;
+        height: 370px;
+        overflow: auto;
+        background: #fff;
+        color: #333;
+        font-size: 12px;
+        border: 1px solid #ECECEC;
+        border-radius: 4px;
+        z-index: 100;
+        padding: 0;
+
+        text-align: left;
+
+        &:after {
+          top: -14px;
+          left: 20px;
+        }
+
+        li {
+          height: 40px;
+          font-size: 14px;
+          line-height: 40px;
+          padding: 0 16px;
+          color: #212736;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          border-bottom: 1px solid #ECECEC;
+        }
+
+        li.active {
+          background: #F1F8FF;
+        }
+
+        li:not(.suggest-title):hover {
+          background: #F1F8FF;
+          cursor: pointer;
+        }
+
+        li.suggest-title {
+          background-color: #f1f8ff;
+          height: 40px;
+          font-size: 14px;
+          line-height: 40px;
+          padding: 0 16px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #212736;
+          font-weight: 500;
+          font-style: normal;
+          font-stretch: normal;
+          letter-spacing: normal;
+        }
+      }
+
+      .task-user-list {
+        width: 250px;
+        left: -138px;
+        height: 300px;
+        bottom: -330px;
+
+        .task-user-avatar {
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  .modal-content-footer {
+    padding: 12px;
+    height: 56px;
+    background-color: #ffffff;
+    border-top: 1px solid #ECECEC;
+
+    .btn {
+      width: 72px;
+      height: 32px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 500;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: center;
+      margin-right: 12px;
+      outline: none;
+    }
+
+    .btn-primary {
+      background-color: #2161fd;
+      border: solid 1px #2161fd;
+      color: #ffffff;
+    }
+
+    .btn-default {
+      border: solid 1px #e1e1e1;
+      background-color: #ffffff;
+      color: #454c5c;
+
+
+    }
+
+
+    .add-task-tip {
+      font-size: 14px;
+      color: #A8A8A8;
+      margin-top: 9px;
+    }
+  }
+}

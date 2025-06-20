@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>编组 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="8" cy="8" r="8"></circle>
+    </defs>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目工程师需求修改" transform="translate(-561.000000, -644.000000)">
+            <g id="编组-10" transform="translate(402.000000, 642.000000)">
+                <g id="编组-8" transform="translate(160.000000, 3.000000)">
+                    <g id="编组-7">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" stroke="#C4C9D6" stroke-width="2" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <path d="M7,8 L12,8 L12,10 L7,10 L5,10 L5,5 L7,5 L7,8 Z" id="合并形状" fill="#C4C9D6" fill-rule="nonzero" transform="translate(8.500000, 7.500000) rotate(-45.000000) translate(-8.500000, -7.500000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

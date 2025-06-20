@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content="{{ report.published_date }} · {{report.lead.salesman.username}}
+     {{ report.report_title }}沟通反馈记录">
+
+    <meta name="author" content="">
+
+
+    <title>{{ report.report_title }}沟通反馈记录</title>
+
+
+    {% load staticfiles %}
+    {% load sass_tags %}
+
+    <script src="{% static 'farm-package/cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js' %}"></script>
+    <!-- jQuery -->
+    <script src="{% static 'farm-package/cdn.bootcss.com/jquery/2.2.4/jquery.min.js' %}"></script>
+
+    <!-- viewer -->
+    <link rel="stylesheet" href="{% static 'reports/js/viewer/viewer.css' %}">
+    <script src="{% static 'reports/js/viewer/viewer.js' %}"></script>
+
+    <!--  photoswipe  -->
+    <link rel="stylesheet" href="{% static 'reports/js/photoswipe/photoswipe.css' %}">
+    <link rel="stylesheet" href="{% static 'reports/js/photoswipe/default-skin/default-skin.css' %}">
+    <script src="{% static 'reports/js/photoswipe/photoswipe.js' %}"></script>
+    <script src="{% static 'reports/js/photoswipe/photoswipe-ui-default.min.js' %}"></script>
+
+    <!--  photoswipe  -->
+    <link rel="stylesheet" href="{% static 'reports/js/swiper/swiper-bundle.css' %}">
+    <script src="{% static 'reports/js/swiper/swiper-bundle.min.js' %}"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'reports/images/favicon.ico' %}"/>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="{% static 'reports/styles/ie10-viewport-bug-workaround.css' %}"/>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/report-view-new.scss' %}?v=3.005"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--[if lt IE 10]>
+    <script src="{% static 'reports/ie10-viewport-bug-workaround.js' %}?v=1.001" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="stylesheet"
+          href="{% static 'farm-package/cdn.bootcss.com/bootstrap-star-rating/css/star-rating.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'reports/styles/report-view-pdf-new.scss' %}?v=3.005"
+          media="print"/>
+    <link rel="stylesheet" href="{% static 'farm-package/mindmap/css/view.mindmap.css' %}?v=3.005">
+    <link rel="stylesheet" href="{% sass_src 'reports/styles/report-mindmap.scss' %}?v=3.005" type="text/css">
+</head>
+
+{% with login_user=request.user %}
+
+<body data-spy="scroll" data-target="#contentScrollspy">
+
+<!--pdf-->
+<!--封面-->
+<div class="pdf-header">
+    <div class="print-header-top">
+        <h1>
+            <span class="report-header-name">{{ report.report_title }}</span>
+            <p class="visible-xs-block"></p>
+            <span class="report-header-function">沟通反馈记录</span>
+        </h1>
+        {% if report.published_date %}
+        <h4 class="print-version-info">{{ report.published_date }} · {{ report.lead.salesman.username }}</h4>
+        {% else %}
+        <h4 class="print-version-info">{{ report.created_date }} · {{ report.lead.salesman.username }}</h4>
+        {% endif %}
+
+    </div>
+    <div class="print-header-middle"></div>
+    <div class="print-header-bottom">
+        <img src="{% static 'reports/images/print-new-logo.png' %}" alt="">
+    </div>
+</div>
+
+<!--打印目录-->
+<nav class="pdf-nav">
+    <ul class="">
+        <li class="content-tip">
+            <p>
+                <span class="nav-icon"></span>
+                <span class="nav-text">报告目录</span>
+            </p>
+        </li>
+
+
+        <li class="item-list">
+            <a href="#meetingUser">
+                <span class="nav-text">参会人员</span>
+            </a>
+        </li>
+
+
+        {% for content in report.catalogue %}
+        <div class="item-list">
+            <li class="item-list">
+                <a href="#{{content.uid}}" class="title-a">
+                    <span class="title-text">{{content.title}}</span>
+                </a>
+            </li>
+            {% if content.children %}
+            <ul class="title-list-center">
+                {% for list in content.children %}
+                <li class="item-list">
+                    <a href="#{{list.uid}}" class="title-a">
+                        <span class="title-text">{{list.title}}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        {% endfor %}
+
+
+        {% if report.show_plan %}
+        {% if report.plans or report.quotation_plans %}
+        <li class="item-list">
+            <a href="#timeMoneyEstimateBoxPdf" class="title-a">
+                <span class="title-text">时间及金额预估</span>
+            </a>
+        </li>
+        {% endif %}
+        {% endif %}
+
+        {% if report.show_company_about %}
+        <li class="item-list">
+            <a href="#aboutChilun" class="title-a">
+                <span class="title-text">关于齿轮</span>
+            </a>
+        </li>
+        {% endif %}
+
+        <!--<li class="item-list">
+            <a href="#caseListBoxPc" class="title-a">
+                <span class="title-text">案例展示</span>
+            </a>
+        </li>-->
+        {% if report.show_company_clients %}
+        <li class="item-list">
+            <a href="#cooperativePartner" class="title-a">
+                <span class="title-text">我们的客户</span>
+            </a>
+        </li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+
+
+<div class="report-preview">
+    <!--封面-->
+    <div class='report-cover-modal  print-hidden'>
+        <div class='report-cover-top'>
+            <div class='report-cover-title'>沟通反馈记录</div>
+            <div class='report-cover-dec'>{{report.report_title}}</div>
+            {% if report.published_date %}
+            <div class='report-cover-text'>
+                {{ report.published_date }} · {{ report.lead.salesman.username }}
+            </div>
+            {% else %}
+            <div class='report-cover-text'>
+                {{ report.created_date }} · {{ report.lead.salesman.username }}
+            </div>
+            {% endif %}
+
+        </div>
+        <div class='report-cover-footer'>
+            <div class='report-cover-footer-text'>滑动阅读沟通反馈记录</div>
+            <div class='report-cover-footer-img'>
+                <img src="{% static 'reports/images/report-view/arrow-down.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!--PC端顶部-->
+    <header class='report-header-pc print-hidden'>
+        <div class='report-header-box'>
+            <div class="report-logo-box">
+                <img class="report-logo" src="{% static 'reports/images/gear-logo-d@2x.svg' %}">
+            </div>
+            <div class="report-right">
+                <div class="report-right-box">
+                    <div class='report-title'>{{report.report_title}} 沟通反馈记录</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--移动端顶部-->
+    <header class='report-header print-hidden'>
+        <div class='report-header-box'>
+            <div class='report-title'>{{report.report_title}}</div>
+<!--            <div class='report-version'>{{report.version}}</div>-->
+        </div>
+    </header>
+
+    <!--目录导航移动-->
+    <div class="nav-box-info print-hidden" id="contentScrollspy">
+        <div class="nav-float-btn" onclick="showNavTabs()">
+            <img src="" alt="">
+        </div>
+        <div class="nav-item-box">
+            <div class="nav-item">
+                <div class="nav-item-top">
+                    <div class="nav-item-top-text">
+                        报告目录
+                    </div>
+                    <div class="nav-item-top-btn" onclick="hideNavTabs()">
+                        关闭
+                    </div>
+                </div>
+                <nav class="content-nav nav-item-center">
+                    <ul class="nav nav-box">
+                        <li class="item-list">
+                            <a href="#meetingUser" class="title-a">
+                                <span class="title-text">参会人员</span>
+                            </a>
+                        </li>
+
+
+                        {% for content in report.catalogue %}
+                        <li class="item-list showdown">
+                            <ul class='group-text'>
+                                <li class="item-list">
+                                    <a href="#{{content.uid}}" class="title-group-a">
+                                        <span class="title-text">{{content.title}}</span>
+                                        <!--{% if content.children %}
+                                        <span class="title-text-right title-show-down" onclick="showDownHandle(event,this)">
+                                            <img class="title-icon" src="{% static 'reports/images/report-view/icon-nav-list.png' %}">
+                                        </span>
+                                        {% endif %}-->
+                                    </a>
+                                </li>
+                            </ul>
+                            {% if content.children %}
+                            <ul class="title-list-center">
+                                {% for list in content.children %}
+                                <li class="item-list">
+                                    <a href="#{{list.uid}}" class="title-a">
+                                        <span class="title-text">{{list.title}}</span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+
+                        {% if report.show_plan %}
+                        {% if report.plans or report.quotation_plans %}
+                        <li class="item-list">
+                            <a href="#timeMoneyEstimateBox" class="title-a">
+                                <span class="title-text">时间及金额预估</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% endif %}
+
+                        {% if report.show_company_about %}
+                        <li class="item-list">
+                            <a href="#aboutChilun" class="title-a">
+                                <span class="title-text">关于齿轮</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="item-list">
+                            <a href="#caseListBox" class="title-a">
+                                <span class="title-text">案例展示</span>
+                            </a>
+                        </li>
+                        {% if report.show_company_clients %}
+                        <li class="item-list">
+                            <a href="#cooperativePartner" class="title-a">
+                                <span class="title-text">我们的客户</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-box">
+        <!--目录导航PC-->
+        <div class="nav-box-info-pc print-hidden" id="contentScrollspy">
+            <div class="nav-item-box-pc">
+                <nav class="content-nav nav-item-center">
+                    <div class="nav-item-center-scroll">
+                        <div class="scroll-item"></div>
+                    </div>
+                    <div class="scroll-box">
+                        <ul class="nav nav-box">
+                            <li class="item-list">
+                               <a href="#meetingUser" class="title-a-pc">
+                                   <span class="title-text">参会人员</span>
+                               </a>
+                           </li>
+
+
+                            {% for content in report.catalogue %}
+                            <li class="item-list showdown">
+                                <ul class='group-text'>
+                                    <li class="item-list">
+                                        <a href="#{{content.uid}}" class="title-a-pc">
+                                            <span class="title-text">{{content.title}}</span>
+                                            <!--{% if content.children %}
+                                            <span class="title-text-right title-show-down" onclick="showDownHandle(event,this)">
+                                                <img class="title-icon" src="{% static 'reports/images/report-view/icon-nav-list-pc.png' %}">
+                                            </span>
+                                            {% endif %}-->
+                                        </a>
+                                    </li>
+                                </ul>
+                                {% if content.children %}
+                                <ul class="title-list-center">
+                                    {% for list in content.children %}
+                                    <li class="item-list">
+                                        <a href="#{{list.uid}}" class="title-a-pc">
+                                            <span class="title-text">{{list.title}}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+
+                            </li>
+                            {% endfor %}
+
+
+                            {% if report.show_plan %}
+                            {% if report.plans or report.quotation_plans %}
+                            <li class="item-list">
+                                <a href="#timeMoneyEstimateBoxPc" class="title-a-pc">
+                                    <span class="title-text">时间及金额预估</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% endif %}
+
+                            {% if report.show_company_about %}
+                            <li class="item-list">
+                                <a href="#aboutChilun" class="title-a-pc">
+                                    <span class="title-text">关于齿轮</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="item-list">
+                                <a href="#caseListBoxPc" class="title-a-pc">
+                                    <span class="title-text">案例展示</span>
+                                </a>
+                            </li>
+                            {% if report.show_company_clients %}
+                            <li class="item-list">
+                                <a href="#cooperativePartner" class="title-a-pc">
+                                    <span class="title-text">我们的客户</span>
+                                </a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                    <div class="top-filter"></div>
+                    <div class="bottom-filter"></div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="pc-box">
+            <!--预览提示-->
+            {% if is_preview %}
+            <section class="info-box print-hidden">
+                <div class="info-box-left">
+                    <div class="flex-item">
+                        <div class="flex-item-label">产品形态：</div>
+                        <div class="flex-item-text">{{report.application_platforms_text}}</div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-item-label">所属行业：</div>
+                        <div class="flex-item-text">{{report.industries_text}}</div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-item-label">产品分类：</div>
+                        <div class="flex-item-text">{{report.product_types_text}}</div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-item-label">线索名称：</div>
+                        <div class="flex-item-text">
+                            {% if login_user.is_superuser %}
+                            <a href="/clients/leads/?lead={{report.lead.id}}" target="_blank">
+                                {{ report.lead.name }}
+                            </a>
+                            {% elif login_user.id == report.lead.creator.id or login_user.id == report.lead.salesman.id %}
+                            <a href="/clients/leads/mine/?lead={{report.lead.id}}" target="_blank" class="top-text-a">
+                                {{ report.lead.name }}
+                            </a>
+                            {% else %}
+                            <a href="javascript:;" class="top-text-a" style="cursor: initial">{{ report.lead.name }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box-right">
+                    {% if report.is_public and not report.is_expired %}
+                    <a href="{{report.report_url}}" target="_blank">
+                        <button class="report-button def-btn">正式报告</button>
+                    </a>
+                    {% endif %}
+                    {% if report.creation_source == 'farm' %}
+                    <button class="report-button green-btn" id="cloneLeadReportBtn">克隆报告</button>
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+
+            <!--项目-->
+            <div class='project-box print-hidden'>
+                <div class='report-cover-top'>
+                    <div class='report-cover-title'>沟通反馈记录</div>
+                    <div class='report-cover-dec'>{{report.report_title}}</div>
+                    <div class='report-cover-text'>
+                        {% if report.published_date %}
+                        制作时间：
+                        <span>{{ report.published_date }}</span>
+                        ·
+                        {% else %}
+                        制作时间：
+                        <span>{{ report.created_date }}</span>
+                        ·
+                        {% endif %}
+                        {% if report.meeting_time %}
+                        沟通时间：
+                        <span>{{ report.meeting_time }}</span>
+                        ·
+                        {% endif %}
+                        {% if report.meeting_place %}
+                        沟通地点：
+                        <span>{{ report.meeting_place }}</span>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div class='report-cenrer-box'>
+
+                <!--参会人员-->
+                <div class="meeting-user relative-box">
+                    <div class="anchor-point" id="meetingUser"></div>
+                    <div class='report-item-title'>
+                        参会人员
+                    </div>
+                    <div class="meeting-participants-table print-only-show">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th width="25%">公司名称</th>
+                                <th width="25%">姓名</th>
+                                <th width="25%">职位</th>
+                                <th width="25%">联系方式</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for meeting_participant in report.meeting_participants %}
+                            <tr>
+                                <td>
+                                    {% if meeting_participant.company %}
+                                    {{meeting_participant.company}}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if meeting_participant.name %}
+                                    {{meeting_participant.name}}
+                                    {% endif %}
+
+                                </td>
+                                <td>
+                                    {% if meeting_participant.position %}
+                                    {{meeting_participant.position}}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if meeting_participant.contact %}
+                                    {{meeting_participant.contact}}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% for meeting_participant in report.meeting_participants %}
+                    <div class="meeting-participants-mobile pdf-hide">
+                        {% if meeting_participant.company %}
+                        <div class="meeting_participant-item">
+                            <div class="meeting_participant-label" style="color: #454c5c;">公司名称</div>
+                            <div class="meeting_participant-text">{{meeting_participant.company}}</div>
+                        </div>
+                        {% endif %}
+                        {% if meeting_participant.name %}
+                        <div class="meeting_participant-item">
+                            <div class="meeting_participant-label">姓名</div>
+                            <div class="meeting_participant-text">{{meeting_participant.name}}</div>
+                        </div>
+                        {% endif %}
+                        {% if meeting_participant.position %}
+                        <div class="meeting_participant-item">
+                            <div class="meeting_participant-label">职位</div>
+                            <div class="meeting_participant-text">{{meeting_participant.position}}</div>
+                        </div>
+                        {% endif %}
+
+                        {% if meeting_participant.contact %}
+                        <div class="meeting_participant-item">
+                            <div class="meeting_participant-label">联系电话</div>
+                            <div class="meeting_participant-text">{{meeting_participant.contact}}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <!--富文本-->
+                <div class="report-rich-center">
+                    {% for content in report.content_list %}
+                    <section class="content-section relative-box">
+                        <div class="anchor-point" id="{{content.uid}}"></div>
+                        <h2>
+                            {{content.title}}
+                        </h2>
+                        <p class="line">
+                        </p>
+                        <div>
+                            {{content.content | safe}}
+                        </div>
+                    </section>
+                    {% endfor %}
+
+                </div>
+
+
+                {% if report.show_plan %}
+                {% if report.plans or report.quotation_plans %}
+                <!--时间及金额预估 PDF-->
+                <div class='time-money-estimate-box-pdf relative-box'>
+                    <div class="anchor-point" id="timeMoneyEstimateBoxPdf"></div>
+                    <div class='report-item-title'>
+                        时间及金额预估
+                        <!--<span class="question-icon">?</span>-->
+                    </div>
+                    {% for plan in report.plans %}
+                    <div class='time-money-estimate'>
+                        <div class="time-money-estimate-center">
+                            <div class="estimate-top">
+                                {% if plan.title %}
+                                <div class="estimate-title">{{plan.title}}</div>
+                                {% else %}
+                                <div class="estimate-title">报价方案</div>
+                                {% endif %}
+                                <!--<div class="estimate-time">预计工期：{{plan.period}}</div>-->
+                            </div>
+                            <div class="estimate-item">
+                                <span class="estimate-item-name">项目报价：</span>
+                                <span class="estimate-item-text">
+                                    <span class="money-text">￥</span>
+                                    <span class="money-text">{{plan.price}}</span>
+                                    <span class="money-text">{{plan.price_unit}}</span>
+                                </span>
+                            </div>
+
+                            {% for name,content in plan.items %}
+                            <div class="estimate-item">
+                                <span class="estimate-item-name">{{name}}：</span>
+                                <span class="estimate-item-text">{{content}}</span>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+                    {% for plan in report.quotation_plans %}
+                    <div class='time-money-estimate'>
+                        <div class="time-money-estimate-center">
+                            <div class='estimate-top'>
+                                {% if plan.title %}
+                                <div class="estimate-title">{{plan.title}}</div>
+                                {% else %}
+                                <div class="estimate-title">报价方案</div>
+                                {% endif %}
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">项目报价：</div>
+                                <div class="estimate-item-text">
+                                    <span class="money-text">￥</span>
+                                    <span class="money-text">{{plan.price}}</span>
+                                    <span class="money-text">{{plan.price_unit}}</span>
+                                </div>
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">预计工期：</div>
+                                <div class="estimate-item-text">
+                                    {{plan.period}}
+                                </div>
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">项目包含：</div>
+                                <div class="estimate-item-text">
+                                    {% for p in plan.projects_list %}
+                                    {{ p }}{% if not forloop.last %}、{% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">服务范围：</div>
+                                <div class="estimate-item-text">
+                                    {% for p in plan.services_list %}
+                                    {{ p }}{% if not forloop.last %}、{% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!--时间及金额预估 PC-->
+                <div class='time-money-estimate-box-pc relative-box print-hidden'>
+                    <div class="anchor-point" id="timeMoneyEstimateBoxPc"></div>
+                    <div class='report-item-title'>
+                        时间及金额预估
+                        <!--<span class="question-icon">?</span>-->
+                    </div>
+
+                    {% for plan in report.plans %}
+                    <div class='time-money-estimate'>
+                        <div class='estimate-center'>
+                            <div class="estimate-left">
+                                {% if plan.title %}
+                                <div class="estimate-title">{{plan.title}}</div>
+                                {% else %}
+                                <div class="estimate-title">报价方案</div>
+                                {% endif %}
+                                <div class="estimate-text">
+                                    <span class="bag-text">￥{{plan.price}}</span>
+                                    <span class="small-text">{{plan.price_unit}}</span>
+                                </div>
+                                <!--<div class="estimate-time">预计工期：<span>12-16周</span></div>-->
+                            </div>
+                            <div class="estimate-right">
+                                {% for name,content in plan.items %}
+                                <div class="estimate-item">
+                                    <div class="estimate-item-name">{{name}}：</div>
+                                    <div class="estimate-item-text">
+                                        {{content}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% for plan in report.quotation_plans %}
+                    <div class='time-money-estimate'>
+                        <div class='estimate-center'>
+                            <div class="estimate-left">
+                                {% if plan.title %}
+                                <div class="estimate-title">{{plan.title}}</div>
+                                {% else %}
+                                <div class="estimate-title">报价方案</div>
+                                {% endif %}
+                                <div class="estimate-text">
+                                    <span class="bag-text">￥{{plan.price}}</span>
+                                    <span class="small-text">{{plan.price_unit}}</span>
+                                </div>
+                                <div class="estimate-time">预计工期：<span>{{plan.period}}</span></div>
+                            </div>
+                            <div class="estimate-right">
+                                <div class="estimate-item">
+                                    <div class="estimate-item-name">项目包含：</div>
+                                    <div class="estimate-item-text">
+                                        {% for p in plan.projects_list %}
+                                        <span>
+                                            {{ p }}
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="estimate-item">
+                                    <div class="estimate-item-name">服务范围：</div>
+                                    <div class="estimate-item-text">
+                                        {% for p in plan.services_list %}
+                                        <span>
+                                            {{ p }}
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <!--时间及金额预估 移动-->
+                <div class='time-money-estimate-box relative-box print-hidden'>
+                    <div class="anchor-point" id="timeMoneyEstimateBox"></div>
+                    <div class='report-item-title'>
+                        时间及金额预估
+                        <!--<span class="question-icon">?</span>-->
+                    </div>
+                    {% for plan in report.plans %}
+                    <div class='time-money-estimate'>
+                        <div class="time-money-estimate-center">
+                            <div class='estimate-top'>
+                                <div class="estimate-top-left">
+                                    {% if plan.title %}
+                                    <div class="estimate-title">{{plan.title}}</div>
+                                    {% else %}
+                                    <div class="estimate-title">报价方案</div>
+                                    {% endif %}
+                                    <!--<div class="estimate-time">预计工期：{{plan.period}}</div>-->
+                                </div>
+                                <div class="estimate-top-right">
+                                    <span class="small-text">￥</span>
+                                    <span class="bag-text">{{plan.price}}</span>
+                                    <span class="small-text">{{plan.price_unit}}</span>
+                                </div>
+                            </div>
+                            {% for name,content in plan.items %}
+                            <div class="estimate-item">
+                                <span class="estimate-item-name">{{name}}：</span>
+                                <span class="estimate-item-text">{{content}}</span>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+                    {% for plan in report.quotation_plans %}
+                    <div class='time-money-estimate'>
+                        <div class="time-money-estimate-center">
+                            <div class='estimate-top'>
+                                <div class="estimate-top-left">
+                                    {% if plan.title %}
+                                    <div class="estimate-title">{{plan.title}}</div>
+                                    {% else %}
+                                    <div class="estimate-title">报价方案</div>
+                                    {% endif %}
+
+                                    <div class="estimate-time">预计工期：{{plan.period}}</div>
+                                </div>
+                                <div class="estimate-top-right">
+                                    <span class="small-text">￥</span>
+                                    <span class="bag-text">{{plan.price}}</span>
+                                    <span class="small-text">{{plan.price_unit}}</span>
+                                </div>
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">项目包含：</div>
+                                <div class="estimate-item-text">
+                                    {% for p in plan.projects_list %}
+                                    {{ p }}{% if not forloop.last %}、{% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="estimate-item">
+                                <div class="estimate-item-name">服务范围：</div>
+                                <div class="estimate-item-text">
+                                    {% for p in plan.services_list %}
+                                    {{ p }}{% if not forloop.last %}、{% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endif %}
+
+                {% if report.show_company_about %}
+                <!--关于齿轮-->
+                <div class="ablout-chilun relative-box print-hidden">
+                    <div class="anchor-point" id="aboutChilun"></div>
+                    <div class='report-item-title'>
+                        关于齿轮
+                    </div>
+                    <div class="text">
+                        齿轮易创为企业提供一体化产品技术解决方案，从商业诉求、行业态势、用户行为等不同角度，帮助客户进行需求梳理和产品规划，将互联网技术与客户实际业务相结合，推动产品等快速落地，满足企业多样化需求。目前齿轮易创已为包括亚马逊、印象笔记、格理集团、Visa等200+企业提供软件定制服务与产品咨询
+                    </div>
+                    <div class="about-chilun-content">
+                        <div class="about-chilun-flex">
+                            <div class="cell-box cell-box1">
+                                <img src="{% static 'reports/images/tdhzz.svg' %}" alt="">
+                                <div class="about-title">团队和资质</div>
+                                <div class="about-text">齿轮易创团队来自大数据、人工智能IT咨询、产品开发等多个行业，具有资深的产品和项目开发经验</div>
+                            </div>
+                            <div class="cell-box cell-box2">
+                                <img src="{% static 'reports/images/djtzjg.svg' %}">
+                                <div class="about-title">顶级投资机构投资</div>
+                                <div class="about-text">真格基金、青锐创投</div>
+                            </div>
+                        </div>
+                        <div class="about-chilun-flex">
+                            <div class="cell-box cell-box1">
+                                <img src="{% static 'reports/images/zzrz.svg' %}">
+                                <div class="about-title">资质认证</div>
+                                <div class="about-text">高新技术企业、ISO国际质量认证、软件著作权</div>
+                            </div>
+                            <div class="cell-box cell-box2">
+                                <img src="{% static 'reports/images/jxry.svg' %}">
+                                <div class="about-title">奖项荣誉</div>
+                                <div class="about-text">福布斯30U30精英、达沃斯经济论坛杰出青年、新锐企业服务商</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                <!--案例展示 PC-->
+                <div class="case-list-box-pc relative-box print-hidden">
+                    <div class="anchor-point" id="caseListBoxPc"></div>
+                    <div class='report-item-title'>
+                        案例展示
+                    </div>
+                    <div class='swiper-container case-swiper-box-pc'>
+                        <div class="swiper-wrapper">
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-1.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">大众集团</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>助力车企数字化及客户体验创新
+                                            </div>
+                                        </div>
+                                        <div class="text-text-hover">⻮轮易创为⻋企提供移动解决方案的开发、零售模式的转型方案，有效融合线上和线下资源
+                                            ，助力⻋企全面提升自身的数字化和智能化水平，应用覆盖随车软件、售后服务智能派单等不同类型。
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-2.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">斯凯孚集团</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>构建敏捷的数字化生产销售模式</div>
+                                        </div>
+                                        <div class="text-text-hover">
+                                            与SKF共同搭建SKF4U斯家服务平台，应用覆盖微信端、Web端，打造全新的工业品电商平台，工程服务工单管理平台及面向不同用户场景的统一门户，赋能合作伙伴和客户，构建了SKF全新的数字化生态，实现客户旅程多样性的闭环
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-3.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">松下投影仪</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>智能物联网定制，赋能企业制造升级</div>
+                                        </div>
+                                        <div class="text-text-hover">
+                                            齿轮易创为松下搭建了以投影机产品为核心，集功能展示、问题咨询、形象宣传等功能于一体的移动端App及后台管理系统，成功地实现了各级供应商优化管理、高效精准触达用户服务。
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination" style="display: none"></div>
+                    </div>
+                </div>
+                <!--案例展示 移动-->
+                <div class="case-list-box relative-box print-hidden">
+                    <div class="anchor-point" id="caseListBox"></div>
+                    <div class='report-item-title'>
+                        案例展示
+                    </div>
+                    <div class='swiper-container case-swiper-box'>
+                        <div class="swiper-wrapper">
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-1.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">大众集团</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>助力车企数字化及客户体验创新</div>
+                                        </div>
+                                        <div class="text-text-hover">⻮轮易创为⻋企提供移动解决方案的开发、零售模式的转型方案，有效融合线上和线下资源
+                                            ，助力⻋企全面提升自身的数字化和智能化水平，应用覆盖随车软件、售后服务智能派单等不同类型。
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-2.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">斯凯孚集团</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>构建敏捷的数字化生产销售模式</div>
+                                        </div>
+                                        <div class="text-text-hover">
+                                            与SKF共同搭建SKF4U斯家服务平台，应用覆盖微信端、Web端，打造全新的工业品电商平台，工程服务工单管理平台及面向不同用户场景的统一门户，赋能合作伙伴和客户，构建了SKF全新的数字化生态，实现客户旅程多样性的闭环
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='swiper-slide'>
+                                <div class='swiper-slide-div'>
+                                    <div class='case-pic-box'>
+                                        <img class="content-img"
+                                             src="{% static 'reports/images/report-view/case-3.png' %}"/>
+                                        <div class='text-text'>
+                                            <div class='text-title'>
+                                                <div class="text">松下投影仪</div>
+                                                <img class="content-img"
+                                                     src="{% static 'reports/images/report-view/icon-arrow.png' %}"/>
+                                            </div>
+                                            <div class='text-dec'>智能物联网定制，赋能企业制造升级</div>
+                                        </div>
+                                        <div class="text-text-hover">
+                                            齿轮易创为松下搭建了以投影机产品为核心，集功能展示、问题咨询、形象宣传等功能于一体的移动端App及后台管理系统，成功地实现了各级供应商优化管理、高效精准触达用户服务。
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='foot-box'>
+
+                {% if report.show_company_clients %}
+                <!--我们的客户-->
+                <div class='cooperative-partner relative-box'>
+                    <div class="cooperative-partner-bg"></div>
+                    <div class="anchor-point" id="cooperativePartner"></div>
+                    <div class='report-item-title'>
+                        我们的客户
+                    </div>
+                    <div class="cooperative-partner-box">
+                        <img class="demo-img-pc print-only-show" src="{% static 'reports/images/report-view/demo-img-pc.png' %}"/>
+                        <img class="demo-img print-hidden" src="{% static 'reports/images/report-view/demo-img.png' %}"/>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if not is_preview %}
+                <!--评论PC-->
+                <div class="comment-box-pc relative-box print-hidden">
+                    <div class="comment-box-center">
+                        <div class="anchor-point" id="commentZBox"></div>
+                        <img class="comment-box-img" src="{% static 'reports/images/report-view/comment-pc-bg.png' %}"/>
+                        <div class="comment-box-center-info-pc">
+                            <div class="comment-box-init-pc">
+                                <div class="comment-box-title">此报告对您是否有帮助</div>
+                                <div class="comment-box-dec">为了能够让我们提供更好的报告，请您给这个报告评分</div>
+                                <div class="comment-box-btn">
+                                    <button onclick="commentPraisePc()" class='comment-btn comment-btn-bg'><img
+                                            class="comment-btn-icon"
+                                            src="{% static 'reports/images/report-view/comment-praise.png' %}" alt=""/>很有帮助
+                                    </button>
+                                    <button onclick="commentNegativePc()" class='comment-btn'><img class="comment-btn-icon"
+                                                                                                   src="{% static 'reports/images/report-view/comment-negative.png' %}"
+                                                                                                   alt=""/>没有帮助
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="comment-box-change-pc">
+                                <div class="comment-box-title">您觉得报告哪里需要改进</div>
+                                <div class="comment-box-tab">
+                        <span class="comment-selects-pc comment-box-tab-item active" data-val="内容不详细"
+                              onclick="selectCommentPc(this)">
+                            <span></span>内容不详细
+                        </span>
+                                    <span class="comment-selects-pc comment-box-tab-item" data-val="不专业没深度"
+                                          onclick="selectCommentPc(this)">
+                            <span></span>不专业没深度
+                        </span>
+                                    <span class="comment-selects-pc comment-box-tab-item" data-val="准备不充分"
+                                          onclick="selectCommentPc(this)">
+                            <span></span>准备不充分
+                        </span>
+                                </div>
+                                <div class="comment-box-btn">
+                                    <button onclick="commentConfimPc()" class='comment-btn comment-btn-bg'>确认提交</button>
+                                </div>
+                            </div>
+                            <div class="comment-box-over-pc">
+                                <div class="comment-box-over-text">感谢您的评价,</div>
+                                <div class="comment-box-over-dev">期待与您继续同行!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--评论移动-->
+                <div class="comment-box relative-box print-hidden">
+                    <div class="anchor-point" id="commentZBox"></div>
+                    <div class="comment-box-init">
+                        <div class="comment-box-title">此报告对您是否有帮助</div>
+                        <div class="comment-box-dec">为了能够让我们提供更好的报告，请您给这个报告评分</div>
+                        <div class="comment-box-btn">
+                            <button onclick="commentPraise()" class='comment-btn comment-btn-bg'><img
+                                    class="comment-btn-icon"
+                                    src="{% static 'reports/images/report-view/comment-praise.png' %}"
+                                    alt=""/>很有帮助
+                            </button>
+                            <button onclick="commentNegative()" class='comment-btn'><img class="comment-btn-icon"
+                                                                                         src="{% static 'reports/images/report-view/comment-negative.png' %}"
+                                                                                         alt=""/>没有帮助
+                            </button>
+                        </div>
+                    </div>
+                    <div class="comment-box-change">
+                        <div class="comment-box-title">您觉得报告哪里需要改进</div>
+                        <div class="comment-box-tab">
+                    <span class="comment-selects comment-box-tab-item active" data-val="内容不详细"
+                          onclick="selectComment(this)">内容不详细</span>
+                            <span class="comment-selects comment-box-tab-item" data-val="不专业没深度"
+                                  onclick="selectComment(this)">不专业没深度</span>
+                            <span class="comment-selects comment-box-tab-item" data-val="准备不充分"
+                                  onclick="selectComment(this)">准备不充分</span>
+                        </div>
+                        <div class="comment-box-btn">
+                            <button onclick="commentConfim()" class='comment-btn comment-btn-bg'>确认提交</button>
+                        </div>
+                    </div>
+                    <div class="comment-box-over">
+                        <div class="comment-box-over-text">感谢您的评价</div>
+                        <div class="comment-box-over-dev">期待与您同行</div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+            {% if not report.show_company_clients and is_preview %}
+            <footer class="footer print-hidden" style="margin-top: 0;position: relative;">
+                © 2021北京齿轮易创科技有限公司 | 京ICP备16038005号-1
+            </footer>
+            {% else %}
+            <footer class="footer print-hidden">
+                © 2021北京齿轮易创科技有限公司 | 京ICP备16038005号-1
+            </footer>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% if is_preview %}
+<div class="preview-version print-hidden">
+    预览报告
+    <span style="font-size: 12px;">内部预览 客户请发正式报告链接</span>
+</div>
+{% endif %}
+
+<div class="right-btn print-hidden">
+    <div class="go-top">
+        <div>
+            <a href="#">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- 图片预览 -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--脑图弹框-->
+<div class="modal-svg-div">
+    <div class="modal-svg">
+        <div class="modal-svg-footer">
+            <div class="modal-svg-close">✕</div>
+            <div class="modal-svg-plotting">
+                <div class="modal-svg-btn modal-svg-subtract">-</div>
+                <div class="modal-svg-num"><span>100</span>%</div>
+                <div class="modal-svg-btn modal-svg-add">+</div>
+            </div>
+        </div>
+        <div class="modal-svg-center" id="modalSvgCenter"></div>
+    </div>
+</div>
+
+
+<!-- 克隆报告 -->
+{% if report.creation_source == 'farm'%}
+<div id="cloneLeadReportModal" class="modal report-clone-modal" tabindex="-1" role="dialog"
+     aria-labelledby="addTaskAnywhereModal">
+    <div class="modal-box">
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <span>选择克隆到哪个线索</span>
+                <span class="pull-right close-btn quick-add-task-close" id="cloneLeadReportModalClose">&times;</span>
+            </div>
+            <div class="modal-content-body">
+                <div class="quick-add-task-container">
+                    <div class="form-content">
+                        <div class="reference-project">
+                            <input id="referenceLead" autofocus autoComplete="off" placeholder="选择线索" value=""
+                                   type="text"/>
+                            <ul id="refLead" class="suggest-container hidden"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content-footer">
+                <button id="cloneLeadReportButton" class="btn btn-primary pull-right">确认</button>
+                <button id="cancelCloneLeadReportButton" class="btn close-btn quick-add-task-close btn btn-default pull-right ">
+                    取消
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+</body>
+{% endwith %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="{% static 'farm-package/cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'farm-package/cdn.bootcss.com/bootstrap-star-rating/js/star-rating.min.js' %}?v=2.005"></script>
+<script src="{% static 'farm-package/timeme.min.js' %}" type="text/javascript"></script>
+<script type="text/javascript">
+    const PageData = {
+        reportData: JSON.parse('{{ report_data_str|safe }}')
+    };
+    const objectData = {
+        app_label: 'reports',
+        model: 'report',
+        object_id: "{{report.id}}",
+        objectName: "报告:{{report.title}}",
+    };
+    const reportData = PageData.reportData;
+    let wxTitle = '{{report.report_title}}沟通反馈记录';
+    let wxDesc = "{{ report.published_date }} · {{report.lead.salesman.username}}";
+    const wxShareData = {
+        title: wxTitle,
+        desc: wxDesc,
+        imgUrl: 'https://cdn.gear.chilunyc.com/static/homepage/images/report-share.png',
+        appId: '{{wx_data.appId}}',
+        timestamp: '{{wx_data.timestamp}}',
+        nonceStr: '{{wx_data.nonceStr}}',
+        signature: '{{wx_data.signature}}',
+    };
+</script>
+<script src="{% static 'farm-package/common_utils.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'farm-package/wechat-share.js' %}?v=3.005" type="text/javascript"></script>
+{% if not is_preview %}
+    <script src="{% static 'farm-package/logged_user_perm.js' %}"></script>
+{% endif %}
+<script src="{% static 'reports/js/report-view-new.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'reports/js/report_browsing_history.js' %}?v=7.029" type="text/javascript"></script>
+
+<script src="{% static 'farm-package/mindmap/js/d3.v3.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'farm-package/mindmap/js/d3-flextree.js' %}" type="text/javascript"></script>
+<script src="{% static 'farm-package/mindmap/js/view.mindmap.new.js' %}?v=3.005" type="text/javascript"></script>
+<script src="{% static 'reports/js/report-mindmap-new.js' %}?v=3.005" type="text/javascript"></script>
+
+{% if report.creation_source == 'farm' and is_preview %}
+<link href="{% sass_src 'reports/styles/clone-report.scss' %}?v=3.005" rel="stylesheet" type="text/css" >
+<script src="{% static 'reports/js/clone_lead_report.js' %}?v=3.005"></script>
+{% endif %}
+</html>

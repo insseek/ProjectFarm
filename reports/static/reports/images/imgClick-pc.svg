@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44" viewBox="0 0 44 44">
+  <defs>
+    <rect id="电脑-打开-b" width="36" height="36" x="0" y="0" rx="18"/>
+    <filter id="电脑-打开-a" width="136.1%" height="136.1%" x="-18.1%" y="-15.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.129411765   0 0 0 0 0.152941176   0 0 0 0 0.211764706  0 0 0 0.159309441 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(4 3)">
+    <use fill="#000" filter="url(#电脑-打开-a)" xlink:href="#电脑-打开-b"/>
+    <use fill="#212736" xlink:href="#电脑-打开-b"/>
+    <path fill="#FFF" d="M12.5857864,20.5857864 L15.5251263,17.6464466 L18.3535534,20.4748737 L15.4142136,23.4142136 L18,26 L10,26 L10,18 L12.5857864,20.5857864 Z M23.4142136,15.4142136 L20.4748737,18.3535534 L17.6464466,15.5251263 L20.5857864,12.5857864 L18,10 L26,10 L26,18 L23.4142136,15.4142136 Z"/>
+  </g>
+</svg>

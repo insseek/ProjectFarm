@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>合并形状</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-258.000000, -959.000000)" fill="#C4C9D6" fill-rule="nonzero">
+            <g id="评论备注" transform="translate(47.000000, 30.000000)">
+                <g id="发送评论" transform="translate(0.000000, 875.000000)">
+                    <g id="Icon-笑脸" transform="translate(210.000000, 53.000000)">
+                        <path d="M9,17 C4.581722,17 1,13.418278 1,9 C1,4.581722 4.581722,1 9,1 C13.418278,1 17,4.581722 17,9 C17,13.418278 13.418278,17 9,17 Z M5.5,8 C6.32842712,8 7,7.32842712 7,6.5 C7,5.67157288 6.32842712,5 5.5,5 C4.67157288,5 4,5.67157288 4,6.5 C4,7.32842712 4.67157288,8 5.5,8 Z M12.5,8 C13.3284271,8 14,7.32842712 14,6.5 C14,5.67157288 13.3284271,5 12.5,5 C11.6715729,5 11,5.67157288 11,6.5 C11,7.32842712 11.6715729,8 12.5,8 Z M13.5839563,11 L4.41604369,11 C5.18760031,12.7659048 6.94968096,14 9,14 C11.050319,14 12.8123997,12.7659048 13.5839563,11 Z" id="合并形状"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

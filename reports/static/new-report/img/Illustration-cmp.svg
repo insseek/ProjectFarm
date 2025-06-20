@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="138" viewBox="0 0 138 138">
+  <defs>
+    <rect id="illustration-计算器-b" width="56" height="70" x="0" y="0" rx="4"/>
+    <filter id="illustration-计算器-a" width="137.5%" height="130%" x="-18.8%" y="-10.7%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <rect id="illustration-计算器-d" width="50" height="50" x="0" y="0" rx="4"/>
+    <filter id="illustration-计算器-c" width="142%" height="142%" x="-21%" y="-15%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <linearGradient id="illustration-计算器-e" x1="0%" x2="100%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#61DCFA"/>
+      <stop offset="100%" stop-color="#1C86F7"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="69" cy="69" r="69" fill="#F9FAFB"/>
+    <g transform="translate(28 27)">
+      <g transform="rotate(-15 59.085 4.32)">
+        <use fill="#000" filter="url(#illustration-计算器-a)" xlink:href="#illustration-计算器-b"/>
+        <use fill="#FFF" xlink:href="#illustration-计算器-b"/>
+        <rect width="23" height="5" x="8" y="12" fill="#E9EBF1" rx="2.5"/>
+        <rect width="40" height="5" x="8" y="23" fill="#E9EBF1" rx="2.5"/>
+        <rect width="40" height="5" x="8" y="34" fill="#E9EBF1" rx="2.5"/>
+        <rect width="40" height="5" x="8" y="45" fill="#E9EBF1" rx="2.5"/>
+        <rect width="40" height="5" x="8" y="56" fill="#E9EBF1" rx="2.5"/>
+      </g>
+      <g transform="translate(25 19)">
+        <use fill="#000" filter="url(#illustration-计算器-c)" xlink:href="#illustration-计算器-d"/>
+        <use fill="#FFF" xlink:href="#illustration-计算器-d"/>
+        <rect width="38" height="7" x="6" y="6" fill="url(#illustration-计算器-e)" rx="1"/>
+        <rect width="6" height="6" x="6" y="18" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="6" y="28" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="6" y="38" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="17" y="18" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="17" y="28" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="17" y="38" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="27" y="18" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="27" y="28" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="16" x="38" y="28" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="27" y="38" fill="#E9EBF1" rx="1"/>
+        <rect width="6" height="6" x="38" y="18" fill="#E9EBF1" rx="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

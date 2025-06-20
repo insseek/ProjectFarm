@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <path id="加粗-a" d="M8,9 L10,9 C11.1045695,9 12,8.1045695 12,7 C12,5.8954305 11.1045695,5 10,5 L8,5 L8,9 Z M8,11 L8,15 L10,15 C11.1045695,15 12,14.1045695 12,13 C12,11.8954305 11.1045695,11 10,11 L8,11 Z M12.6458244,10 C13.4762451,10.7329445 14,11.8053075 14,13 C14,15.209139 12.209139,17 10,17 L6,17 L6,11 L6,3 L10,3 C12.209139,3 14,4.790861 14,7 C14,8.19469253 13.4762451,9.26705555 12.6458244,10 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="加粗-b" fill="#fff">
+      <use xlink:href="#加粗-a"/>
+    </mask>
+    <use fill="#212736" fill-rule="nonzero" xlink:href="#加粗-a"/>
+    <g fill="#212736" mask="url(#加粗-b)">
+      <rect width="20" height="20"/>
+    </g>
+  </g>
+</svg>

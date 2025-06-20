@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>button-添加角色</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="12"></circle>
+    </defs>
+    <g id="button-添加角色" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <g id="Group-3" transform="translate(3.000000, 3.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <circle stroke="#2161FD" stroke-width="2" cx="12" cy="12" r="11"></circle>
+                <circle id="Oval-2" stroke="#2161FD" stroke-width="2" mask="url(#mask-2)" cx="12" cy="9.81818182" r="3.36363636"></circle>
+                <path d="M11.8475384,22.9444062 C12.3270901,22.9444062 12.7321099,22.9521987 13.4978952,22.9725563 C15.7829853,23.0333029 16.5946365,22.9931176 17.2909131,22.7178365 C18.0043561,22.4357686 18.3314404,21.874743 18.3314404,20.5748111 C18.3314404,16.9938509 15.4284986,14.0909091 11.8475384,14.0909091 C8.26657818,14.0909091 5.36363636,16.9938509 5.36363636,20.5748111 C5.36363636,21.874743 5.69072069,22.4357686 6.40416366,22.7178365 C7.1004403,22.9931176 7.91209144,23.0333029 10.1971815,22.9725563 C10.9629669,22.9521987 11.3679866,22.9444062 11.8475384,22.9444062 Z" id="Oval-2-Copy" stroke="#2161FD" stroke-width="2" mask="url(#mask-2)"></path>
+            </g>
+            <g id="Group" transform="translate(17.000000, 17.000000)">
+                <circle id="Combined-Shape" fill="#2161FD" cx="6" cy="6" r="6"></circle>
+                <rect id="Rectangle-26" fill="#FFFFFF" x="5" y="2" width="2" height="8"></rect>
+                <rect id="Rectangle-27" fill="#FFFFFF" x="2" y="5" width="8" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

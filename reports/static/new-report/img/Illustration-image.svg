@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="138" viewBox="0 0 138 138">
+  <defs>
+    <rect id="illustration-图片-a" width="80" height="60" x="0" y="0" rx="4"/>
+    <filter id="illustration-图片-b" width="126.2%" height="135%" x="-13.1%" y="-12.5%" filterUnits="objectBoundingBox">
+      <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.594991147   0 0 0 0 0.626637662   0 0 0 0 0.703776042  0 0 0 0.136609484 0"/>
+    </filter>
+    <linearGradient id="illustration-图片-c" x1="28.992%" x2="64.587%" y1="3.933%" y2="100%">
+      <stop offset="0%" stop-color="#FFEA7D"/>
+      <stop offset="100%" stop-color="#FFD42D"/>
+    </linearGradient>
+    <linearGradient id="illustration-图片-e" x1="54.946%" x2="54.946%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#09E3BB"/>
+      <stop offset="100%" stop-color="#00D4D8"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="69" cy="69" r="69" fill="#F9FAFB"/>
+    <g transform="translate(29 39)">
+      <mask id="illustration-图片-d" fill="#fff">
+        <use xlink:href="#illustration-图片-a"/>
+      </mask>
+      <use fill="#000" filter="url(#illustration-图片-b)" xlink:href="#illustration-图片-a"/>
+      <use fill="#FFF" xlink:href="#illustration-图片-a"/>
+      <circle cx="17" cy="17" r="12" fill="url(#illustration-图片-c)" mask="url(#illustration-图片-d)" opacity=".114"/>
+      <circle cx="17" cy="17" r="10" fill="url(#illustration-图片-c)" mask="url(#illustration-图片-d)" opacity=".123"/>
+      <circle cx="17" cy="17" r="7" fill="url(#illustration-图片-c)" mask="url(#illustration-图片-d)"/>
+      <path fill="url(#illustration-图片-e)" d="M37.3516484,42.1978022 L54,20 L84,60 L51,60 L5,60 L28,30 L37.3516484,42.1978022 Z" mask="url(#illustration-图片-d)"/>
+    </g>
+  </g>
+</svg>
